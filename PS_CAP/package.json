@@ -1,5 +1,5 @@
 {
-  "name": "Cap_Project1",
+  "name": "PS_CAP",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -7,7 +7,6 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
-    "@sap/cds-dk": "^6.6.2",
     "express": "^4"
   },
   "devDependencies": {
@@ -21,7 +20,7 @@
       "db": {
         "kind": "sqlite",
         "credentials": {
-          "database": "Sathya"
+          "database": "Sathya.db"
         }
       }
     }

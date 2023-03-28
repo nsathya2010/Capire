@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Sathya_conx",
+            "database": "${workspaceFolder:Capire}/Cap_Project1/Sathya"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
