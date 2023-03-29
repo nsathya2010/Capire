@@ -1,0 +1,10 @@
+POST http://localhost:4004/pack-spec/PackSpec
+Content-Type: application/json
+
+    {
+    "ps_desc": "PackSpecZ1",
+    "header": {
+        "ps_group": "PS1",
+        "material": "M29961234"
+    }
+}

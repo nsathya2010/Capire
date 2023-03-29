@@ -14,9 +14,10 @@ context masterdata
 {
     entity ps_master : cuid, managed
     {
+        ps_id : Integer;
         ps_desc : String;
         header : Composition  of one ps_header on header.master_key = $self;
-        // ps_level : Association to many ps_level;
+        // levels : Composition of many ps_level on header.master_key = $self;
     }
 
     entity ps_header : cuid, managed
