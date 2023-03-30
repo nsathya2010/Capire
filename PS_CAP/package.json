@@ -10,10 +10,12 @@
     "express": "^4"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.108.1",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-packspec": "cds watch --open packspec/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -28,6 +30,7 @@
   "sapux": [
     "app/packspec",
     "app/project1",
+    "app/packspec",
     "app/packspec"
   ]
 }
