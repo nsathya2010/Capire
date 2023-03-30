@@ -13,9 +13,7 @@
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run",
-    "watch-packspec": "cds watch --open packspec/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false"
+    "start": "cds run"
   },
   "cds": {
     "requires": {
