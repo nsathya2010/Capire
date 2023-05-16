@@ -1,6 +1,5 @@
 # CAP PS_CAP
 _out
-*.db
 *.sqlite
 connection.properties
 default-*.json

@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.108.1",
-    "sqlite3": "^5.0.4"
+    "sqlite3": "5.0.2"
   },
   "scripts": {
     "start": "cds run",
@@ -20,9 +20,9 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sqlite",
+        "kind": "sql",
         "credentials": {
-          "database": "Sathya.db"
+          "database": "sathya.db"
         }
       }
     }

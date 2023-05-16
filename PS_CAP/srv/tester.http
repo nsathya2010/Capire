@@ -8,3 +8,5 @@ Content-Type: application/json
         "material": "M29961234"
     }
 }
+
+cds deploy --to sql:sathya.db
