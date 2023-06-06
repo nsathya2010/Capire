@@ -1,0 +1,9 @@
+/* Enter your custom styles here */
+
+.removePanelBorder .sapMPanelContent {
+    border-bottom: none
+}
+
+.messageStripWidth .sapMFlexItem {
+    width: 100%;
+}

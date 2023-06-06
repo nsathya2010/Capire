@@ -7,6 +7,8 @@ service PackSpec {
     *,
     header : redirected to PS_Header
   };
+
+function generateQuoteId() returns String;  
 //   entity PS_Level as projection on db.masterdata.ps_level;
 //   entity PS_Level_Items as projection on db.masterdata.ps_level_mat;
 }

@@ -1,0 +1,247 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm" Version="4.0">
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='ER9CLNT001')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema Namespace="com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001" Alias="SAP__self">
+			<EntityType Name="MaintEvtPrioznPrflType">
+				<Key>
+					<PropertyRef Name="Plant"/>
+					<PropertyRef Name="NotificationType"/>
+					<PropertyRef Name="MaintEvtPrioritizationProfile"/>
+					<PropertyRef Name="MaintEventConsequenceGroup"/>
+					<PropertyRef Name="MaintEventCnsqncCategoryCode"/>
+					<PropertyRef Name="MaintEventConsequenceCode"/>
+					<PropertyRef Name="MaintEventLikelihoodCode"/>
+				</Key>
+				<Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+				<Property Name="NotificationType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintEvtPrioritizationProfile" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<Property Name="MaintEventConsequenceGroup" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<Property Name="MaintEventCnsqncCategoryCode" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintEventConsequenceCode" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintEventLikelihoodCode" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintEvtCnsqncCatPositionValue" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintEventCnsqncPositionValue" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintEvtLklihdPositionValue" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MaintPriority" Type="Edm.String" Nullable="false" MaxLength="1"/>
+				<Property Name="MaintPriorityType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="ConfigurationDeprecationCode" Type="Edm.String" Nullable="false" MaxLength="1"/>
+				<Property Name="MaintEventPrioznProfileLabel" Type="Edm.String" Nullable="false" MaxLength="40"/>
+				<Property Name="MaintEventCnsqncCategoryTitle" Type="Edm.String" Nullable="false" MaxLength="40"/>
+				<Property Name="MaintEvtCnsqncCategorySubTitle" Type="Edm.String" Nullable="false" MaxLength="40"/>
+				<Property Name="MaintEvtConsequenceDescription" Type="Edm.String" Nullable="false" MaxLength="70"/>
+				<Property Name="MaintEvtLikelihoodDescription" Type="Edm.String" Nullable="false" MaxLength="70"/>
+				<Property Name="MaintPriorityDesc" Type="Edm.String" Nullable="false" MaxLength="20"/>
+			</EntityType>
+			<ComplexType Name="EAM_S_PRIOZN_PRFL_CALCULATED">
+				<Property Name="MAINTPRIORITY" Type="Edm.String" Nullable="false" MaxLength="1"/>
+				<Property Name="MAINTPRIORITYDESC" Type="Edm.String" Nullable="false" MaxLength="20"/>
+				<Property Name="LACD_DATE" Type="Edm.Date" Nullable="true"/>
+				<Property Name="LEADING_VALUES" Type="Collection(com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001.EAM_S_PRIOZN_PRFL_LEADING)"
+					Nullable="false"/>
+				<Property Name="SELECTED_VALUES" Type="Collection(com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001.EAM_S_PRIOZN_PRFL_SELECTED)"
+					Nullable="false"/>
+			</ComplexType>
+			<ComplexType Name="EAM_S_PRIOZN_PRFL_SELECTED">
+				<Property Name="PLANT" Type="Edm.String" Nullable="false" MaxLength="4"/>
+				<Property Name="NOTIFICATIONTYPE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MAINTEVTPRIORITIZATIONPROFILE" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<Property Name="MAINTEVENTCONSEQUENCEGROUP" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<Property Name="MAINTEVENTCNSQNCCATEGORYCODE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MAINTEVENTCONSEQUENCECODE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MAINTEVENTLIKELIHOODCODE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MAINTPRIORITY" Type="Edm.String" Nullable="false" MaxLength="1"/>
+				<Property Name="MAINTPRIORITYTYPE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+			</ComplexType>
+			<ComplexType Name="EAM_S_PRIOZN_PRFL_LEADING">
+				<Property Name="MAINTEVENTCNSQNCCATEGORYCODE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MAINTEVENTCONSEQUENCECODE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+				<Property Name="MAINTEVENTLIKELIHOODCODE" Type="Edm.String" Nullable="false" MaxLength="2"/>
+			</ComplexType>
+			<Action Name="CalculateMaintEventPriority" IsBound="true">
+				<Parameter Name="_it" Type="Collection(com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001.MaintEvtPrioznPrflType)" Nullable="false"/>
+				<Parameter Name="SELECTED_VALUES" Type="Collection(com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001.EAM_S_PRIOZN_PRFL_SELECTED)"
+					Nullable="false"/>
+				<ReturnType Type="Collection(com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001.EAM_S_PRIOZN_PRFL_CALCULATED)" Nullable="false"/>
+			</Action>
+			<EntityContainer Name="Container">
+				<EntitySet Name="MaintEvtPrioznPrfl" EntityType="com.sap.gateway.srvd_a2x.ui_prioritization_profile.v0001.MaintEvtPrioznPrflType"/>
+			</EntityContainer>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/Plant">
+				<Annotation Term="SAP__common.IsUpperCase"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/NotificationType">
+				<Annotation Term="SAP__common.IsUpperCase"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEvtPrioritizationProfile">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEventCnsqncCategoryCode">
+				<Annotation Term="SAP__common.IsDigitSequence"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEventConsequenceCode">
+				<Annotation Term="SAP__common.IsDigitSequence"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEventLikelihoodCode">
+				<Annotation Term="SAP__common.IsDigitSequence"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEvtCnsqncCatPositionValue">
+				<Annotation Term="SAP__common.IsDigitSequence"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEventCnsqncPositionValue">
+				<Annotation Term="SAP__common.IsDigitSequence"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEvtLklihdPositionValue">
+				<Annotation Term="SAP__common.IsDigitSequence"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintPriority">
+				<Annotation Term="SAP__common.IsUpperCase"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintPriorityType">
+				<Annotation Term="SAP__common.IsUpperCase"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/ConfigurationDeprecationCode">
+				<Annotation Term="SAP__common.IsUpperCase"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEventPrioznProfileLabel">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEventCnsqncCategoryTitle">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEvtCnsqncCategorySubTitle">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEvtConsequenceDescription">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintEvtLikelihoodDescription">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.MaintEvtPrioznPrflType/MaintPriorityDesc">
+				<Annotation Term="SAP__core.Computed"/>
+			</Annotations>
+			<Annotations Target="SAP__self.Container/MaintEvtPrioznPrfl">
+				<Annotation Term="SAP__capabilities.SearchRestrictions">
+					<Record>
+						<PropertyValue Property="Searchable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="SAP__capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="SAP__capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="SAP__capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="FilterExpressionRestrictions">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="Plant"/>
+									<PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="NotificationType"/>
+									<PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="MaintPriority"/>
+									<PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="MaintPriorityType"/>
+									<PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="ConfigurationDeprecationCode"/>
+									<PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="SAP__capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="QueryOptions">
+							<Record>
+								<PropertyValue Property="SelectSupported" Bool="true"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SAP__self.Container">
+				<Annotation Term="SAP__aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Rollup" EnumMember="None"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

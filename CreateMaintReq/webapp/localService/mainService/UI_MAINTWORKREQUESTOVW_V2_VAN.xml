@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/></edmx:Reference>
+	<edmx:Reference Uri="../../../sap/ui_maintworkrequestovw_v2/$metadata"><edmx:Include Namespace="UI_MAINTWORKREQUESTOVW_V2" Alias="SAP"/></edmx:Reference>
+	<edmx:DataServices>
+		<Schema Namespace="ui_maintworkrequestovw_v2_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/DraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/ParentDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/Delete_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifEventPrioznTPType/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/DraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/ParentDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/to_ItemActivity_oc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationItemTP_2Type/to_ItemCause_oc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/DraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/ParentDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotificationPartnerTPType/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/DraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/ParentDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/RootDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemActivityTPType/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/DraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/ParentDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/RootDraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifItemCauseTPType/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintNotifProcgContextVHType/MaintNotifProcessingContext"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintOrdForTechObjQuickVwType/MaintenanceOrderInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintOrdForTechObjQuickVwType/Equipment"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintOrdForTechObjQuickVwType/MaintObjectLocAcctAssgmtNmbr"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintOrdForTechObjQuickVwType">
+				<Annotation Term="UI.PresentationVariant">
+					<Record>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>ConcatenatedActiveUserStsName</PropertyPath>
+								<PropertyPath>ConcatenatedActiveSystStsName</PropertyPath>
+								<PropertyPath>MaintOrdBasicEndDate</PropertyPath>
+								<PropertyPath>MaintOrdBasicStartDate</PropertyPath>
+								<PropertyPath>LatestAcceptableCompletionDate</PropertyPath>
+								<PropertyPath>MaintenancePlanningPlant</PropertyPath>
+								<PropertyPath>MaintenanceOrderTypeName</PropertyPath>
+								<PropertyPath>MaintenanceOrderType</PropertyPath>
+								<PropertyPath>MaintenanceOrderDesc</PropertyPath>
+								<PropertyPath>MaintenanceOrder</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestDamageCodeVHType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="InspectionCatalog"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="InspectionCode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="InspectionCodeGroup"/></Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MalfunctionStartDateTime"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MalfunctionEndDateTime"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NotificationCreationDateTime"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifRqdStartDateTime"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifRqdEndDateTime"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotificationLongText"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.MultiLineText"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifLongTextForEdit"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.MultiLineText"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/DraftUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/to_TechnicalObjQuickVw"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintPriorityType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/GenericPriorityColorCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NotifProcessingPhaseDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintPriorityDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifRejectionRsnCodeTxt"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/LastChangedByUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/CreationDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/LastChangeTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/LastChangeDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/LastChangeDateTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/CreationTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MalfunctionStartTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MalfunctionEndTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotificationCatalog"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/InspectionCodeText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/InspSpecAddlCodeGroupText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/CatalogProfile"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NotificationCreationTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NotificationTimeZone"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/RequiredStartTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/RequiredEndTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintObjDowntimeDurationUnit"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TextObjectCategory"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TextObjectType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/SuperiorTechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/SuperiorTechnicalObjectName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/SuperiorObjIsEquipOrFuncnlLoc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/SuperiorTechnicalObjectLabel"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechObjIsEquipOrFuncnlLocDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/FunctionalLocation"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/FunctionalLocationName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechnicalObjectDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/LocationName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/BusinessArea"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/CompanyCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechnicalObjectCategoryDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechnicalObjectType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/FullName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/PlantName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenancePlannerGroupName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenanceWorkCenterPlant"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenanceWorkCenterPlantName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenanceWorkCenter"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/WorkCenterTypeCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NmbrOfOpenMaintNotifications"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NumberOfOrders"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintWorkRequestAttchKey"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifSourceApplication"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifWithLeadingZeros"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MainWorkCenterText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MainWorkCenterPlantName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenancePlantName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/PlantSectionPersonRespName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/PlantSectionPersonRespPhone"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ABCIndicatorDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/PersonResponsibleName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifRespPartnerFunction"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ActiveTechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ActiveTechnicalObjectType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ConcatenatedActiveSystStsName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ConcatenatedActiveUserStsName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenanceOrderDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintEvtIsCreatedByCurrentUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/EAMProcessSubPhaseCodeDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/EAMProcessPhaseCodeDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MalfunctionEffectText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenanceTaskListType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TaskListGroup"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TaskListGroupCounter"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TaskListKeyDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TaskListDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifDetectionCatalog"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifDetectionCodeText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifDetectionCodeGrpTxt"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/WorkRequestTextTemplate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifProcgCntxtIsAllwd"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ApproveMaintWorkRequest_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ChangeMaintWorkReqRespy_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ChangeMaintWorkReqScheduling_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/CopyMaintenanceNotification_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/Edit_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/RejectMaintWorkRequest_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/SetMaintNotifToApprvlRequired_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/SetMaintNotifToInfoRequired_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifProcessingContext_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TaskList_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/to_EventPrio_oc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/to_Item_oc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/to_Partner_oc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintPriority">
+				<Annotation Term="Common.Text" Path="MaintPriorityDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/NotifProcessingPhase">
+				<Annotation Term="Common.Text" Path="NotifProcessingPhaseDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/ReportedByUser">
+				<Annotation Term="Common.Text" Path="ReporterFullName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MalfunctionEffect">
+				<Annotation Term="Common.Text" Path="MalfunctionEffectText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotificationCode">
+				<Annotation Term="Common.Text" Path="InspectionCodeText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotificationCodeGroup">
+				<Annotation Term="Common.Text" Path="InspSpecAddlCodeGroupText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechObjIsEquipOrFuncnlLoc">
+				<Annotation Term="Common.Text" Path="TechObjIsEquipOrFuncnlLocDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/TechnicalObjectLabel">
+				<Annotation Term="Common.Text" Path="TechnicalObjectDescription"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintenancePlannerGroup">
+				<Annotation Term="Common.Text" Path="MaintenancePlannerGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifProcessPhaseCode">
+				<Annotation Term="Common.Text" Path="EAMProcessPhaseCodeDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifProcessSubPhaseCode">
+				<Annotation Term="Common.Text" Path="EAMProcessSubPhaseCodeDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifRejectionReasonCode">
+				<Annotation Term="Common.Text" Path="MaintNotifRejectionRsnCodeTxt"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType/MaintNotifDetectionCodeGroup">
+				<Annotation Term="Common.Text" Path="MaintNotifDetectionCodeGrpTxt"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWorkRequestOverviewTPType">
+				<Annotation Term="UI.DataPoint" Qualifier="MaintPriority">
+					<Record><PropertyValue Property="Value" Path="MaintPriority"/><PropertyValue Property="Title" String="Priority"/><PropertyValue Property="Criticality" Path="GenericPriorityColorCode"/></Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="MaintenanceObjectIsDown">
+					<Record><PropertyValue Property="Value" Path="MaintenanceObjectIsDown"/><PropertyValue Property="Title" String="Breakdown"/><PropertyValue Property="Criticality" Path="MaintenanceObjectIsDown"/><PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithIcon"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Criticality">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifRqdStartDateTime"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifRqdEndDateTime"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LatestAcceptableCompletionDate"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Dates">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MalfunctionStartDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredStartDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredEndDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LatestAcceptableCompletionDate"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="FailureInfo">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MalfunctionStartDateTime"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MalfunctionEndDateTime"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceObjectIsDown"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintObjectDowntimeDuration"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MalfunctionEffect"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LocationDescription"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Failure information"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="GeneralInfo">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationText"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotificationLongText"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifLongTextForEdit"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="General Information"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="HeaderGeneral">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationText"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Header"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="IdentifiedAsset">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotificationCodeGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotificationCode"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MalfunctionEffect"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechObjInstallationLocation"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Identified Asset"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="LocationData">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenancePlant"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LocationDescription"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AssetLocation"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PlantSection"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Technical Object Location"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="MaintPlanAndItem">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenancePlan"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceItem"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenancePlanCallNumber"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Maintenance Plan and Item"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Overview">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceOrder"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifProcessPhaseCode"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifProcessSubPhaseCode"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Responsibility">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReportedByUser"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationCreationDateTime"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CreatedByUser"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CreationDateTime"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="ResponsibleArea">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenancePlanningPlant"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenancePlannerGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MainWorkCenter"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MainWorkCenterPlant"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonResponsible"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Responsible Area"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="TaskList">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TaskList"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Task List"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="TechnicalObject">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechObjIsEquipOrFuncnlLoc"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectCategory"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AssetManufacturerName"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ManufacturerPartTypeName"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Technical Object"/></Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Work Request"/><PropertyValue Property="TypeNamePlural" String="Work Requests"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/></Record>
+						</PropertyValue>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationText"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationType"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationText"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationCreationDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NmbrOfOpenMaintNotifications"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReportedByUser"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NumberOfOrders"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonResponsible"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifRqdStartDateTime"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredStartDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifRqdEndDateTime"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredEndDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LatestAcceptableCompletionDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LocationDescription"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AssetLocation"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Accept"/><PropertyValue Property="Action" String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/ApproveMaintWorkRequest"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Reject"/><PropertyValue Property="Action" String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/RejectMaintWorkRequest"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Action Required"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/SetMaintNotifToInfoRequired"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Unassign Work Order"/>
+							<PropertyValue Property="Action" String="">
+								<Annotation Term="Core.Messages">
+									<Collection>
+										<Record><PropertyValue Property="message" String="ERROR: Mandatory Value for Action not found"/><PropertyValue Property="severity" String="error"/></Record>
+									</Collection>
+								</Annotation>
+							</PropertyValue><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/><Annotation Term="UI.Hidden"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Submit"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/SetMaintNotifToApprvlRequired"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Copy"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/CopyMaintenanceNotification"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Unassign Work Order"/>
+							<PropertyValue Property="Action" String="">
+								<Annotation Term="Core.Messages">
+									<Collection>
+										<Record><PropertyValue Property="message" String="ERROR: Mandatory Value for Action not found"/><PropertyValue Property="severity" String="error"/></Record>
+									</Collection>
+								</Annotation>
+							</PropertyValue><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/><Annotation Term="UI.Hidden"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Submit"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/SetMaintNotifToApprvlRequired"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/><Annotation Term="UI.Hidden"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="CreateDrafts">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintPriority"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReportedByUser"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="PhaseActionReqd">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Criticality" Path="GenericPriorityColorCode"/><PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/><PropertyValue Property="Value" Path="MaintPriority"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifRejectionReasonCode"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredStartDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredEndDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="PhaseCompleted">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Criticality" Path="GenericPriorityColorCode"/><PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/><PropertyValue Property="Value" Path="MaintPriority"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LatestAcceptableCompletionDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationReferenceDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationCompletionDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Copy"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/CopyMaintenanceNotification"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="PhaseInProcess">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Criticality" Path="GenericPriorityColorCode"/><PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/><PropertyValue Property="Value" Path="MaintPriority"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredStartDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequiredEndDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="LatestAcceptableCompletionDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Copy"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/CopyMaintenanceNotification"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="PhaseRejected">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Criticality" Path="GenericPriorityColorCode"/><PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/><PropertyValue Property="Value" Path="MaintPriority"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifRejectionReasonCode"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationCreationDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationCompletionDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="PhaseSubmitted">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenanceNotification"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Criticality" Path="GenericPriorityColorCode"/><PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/><PropertyValue Property="Value" Path="MaintPriority"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ABCIndicator"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NotificationCreationDate"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NmbrOfOpenMaintNotifications"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="NumberOfOrders"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintNotifLongTextForEdit"/><Annotation Term="UI.Hidden"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Action Required"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/SetMaintNotifToInfoRequired"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/><Annotation Term="UI.Hidden"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Copy"/><PropertyValue Property="Action"
+							String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/CopyMaintenanceNotification"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Accept"/><PropertyValue Property="Action" String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/ApproveMaintWorkRequest"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+						<Record Type="UI.DataFieldForAction"><PropertyValue Property="Label" String="Reject"/><PropertyValue Property="Action" String="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/RejectMaintWorkRequest"/><PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="CreateDrafts">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/><PropertyValue Property="Descending" Bool="true"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+								<PropertyPath>TechnicalObject</PropertyPath>
+								<PropertyPath>ActiveTechnicalObjectType</PropertyPath>
+								<PropertyPath>ActiveTechnicalObject</PropertyPath>
+								<PropertyPath>LocationDescription</PropertyPath>
+								<PropertyPath>NotificationType</PropertyPath>
+								<PropertyPath>NotificationText</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#CreateDrafts</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PhaseRejected">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="MaintPriority"/><PropertyValue Property="Descending" Bool="false"/></Record>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CreationDateTime"/><PropertyValue Property="Descending" Bool="true"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>TaskListKeyDate</PropertyPath>
+								<PropertyPath>TaskListGroupCounter</PropertyPath>
+								<PropertyPath>TaskListGroup</PropertyPath>
+								<PropertyPath>MaintenanceTaskListType</PropertyPath>
+								<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+								<PropertyPath>TechnicalObject</PropertyPath>
+								<PropertyPath>ActiveTechnicalObjectType</PropertyPath>
+								<PropertyPath>ActiveTechnicalObject</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#PhaseRejected</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PhaseInProcess">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="MaintPriority"/><PropertyValue Property="Descending" Bool="false"/></Record>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CreationDateTime"/><PropertyValue Property="Descending" Bool="true"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>TaskListKeyDate</PropertyPath>
+								<PropertyPath>TaskListGroupCounter</PropertyPath>
+								<PropertyPath>TaskListGroup</PropertyPath>
+								<PropertyPath>MaintenanceTaskListType</PropertyPath>
+								<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+								<PropertyPath>TechnicalObject</PropertyPath>
+								<PropertyPath>ActiveTechnicalObjectType</PropertyPath>
+								<PropertyPath>ActiveTechnicalObject</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#PhaseInProcess</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PhaseCompleted">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="MaintPriority"/><PropertyValue Property="Descending" Bool="false"/></Record>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CreationDateTime"/><PropertyValue Property="Descending" Bool="true"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>TaskListKeyDate</PropertyPath>
+								<PropertyPath>TaskListGroupCounter</PropertyPath>
+								<PropertyPath>TaskListGroup</PropertyPath>
+								<PropertyPath>MaintenanceTaskListType</PropertyPath>
+								<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+								<PropertyPath>TechnicalObject</PropertyPath>
+								<PropertyPath>ActiveTechnicalObjectType</PropertyPath>
+								<PropertyPath>ActiveTechnicalObject</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#PhaseCompleted</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PhaseActionReqd">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="MaintPriority"/><PropertyValue Property="Descending" Bool="false"/></Record>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CreationDateTime"/><PropertyValue Property="Descending" Bool="true"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>TaskListKeyDate</PropertyPath>
+								<PropertyPath>TaskListGroupCounter</PropertyPath>
+								<PropertyPath>TaskListGroup</PropertyPath>
+								<PropertyPath>MaintenanceTaskListType</PropertyPath>
+								<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+								<PropertyPath>TechnicalObject</PropertyPath>
+								<PropertyPath>ActiveTechnicalObjectType</PropertyPath>
+								<PropertyPath>ActiveTechnicalObject</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#PhaseActionReqd</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant" Qualifier="PhaseSubmitted">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="MaintPriority"/><PropertyValue Property="Descending" Bool="false"/></Record>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CreationDateTime"/><PropertyValue Property="Descending" Bool="true"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>TaskListKeyDate</PropertyPath>
+								<PropertyPath>TaskListGroupCounter</PropertyPath>
+								<PropertyPath>TaskListGroup</PropertyPath>
+								<PropertyPath>MaintenanceTaskListType</PropertyPath>
+								<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+								<PropertyPath>TechnicalObject</PropertyPath>
+								<PropertyPath>NotificationType</PropertyPath>
+								<PropertyPath>TextObjectCategory</PropertyPath>
+								<PropertyPath>ActiveTechnicalObjectType</PropertyPath>
+								<PropertyPath>ActiveTechnicalObject</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem#PhaseSubmitted</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>MaintenanceNotification</PropertyPath>
+						<PropertyPath>MaintenancePlanningPlant</PropertyPath>
+						<PropertyPath>MaintenancePlannerGroup</PropertyPath>
+						<PropertyPath>MainWorkCenter</PropertyPath>
+						<PropertyPath>PlantSection</PropertyPath>
+						<PropertyPath>AssetLocation</PropertyPath>
+						<PropertyPath>MaintPriority</PropertyPath>
+						<PropertyPath>TechnicalObjectLabel</PropertyPath>
+						<PropertyPath>TechObjIsEquipOrFuncnlLoc</PropertyPath>
+						<PropertyPath>ABCIndicator</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="CreateDrafts">
+					<Record><PropertyValue Property="Text" String="Drafts"/><PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#CreateDrafts"/><PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#CreateDrafts"/></Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="PhaseRejected">
+					<Record><PropertyValue Property="Text" String="Rejected"/><PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#PhaseRejected"/><PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#PhaseRejected"/></Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="PhaseInProcess">
+					<Record><PropertyValue Property="Text" String="Accepted"/><PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#PhaseInProcess"/><PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#PhaseInProcess"/></Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="PhaseCompleted">
+					<Record><PropertyValue Property="Text" String="Completed"/><PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#PhaseCompleted"/><PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#PhaseCompleted"/></Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="PhaseActionReqd">
+					<Record><PropertyValue Property="Text" String="Action Required"/><PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#PhaseActionReqd"/><PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#PhaseActionReqd"/></Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="PhaseSubmitted">
+					<Record><PropertyValue Property="Text" String="Submitted"/><PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#PhaseSubmitted"/><PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#PhaseSubmitted"/></Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="CreateDrafts">
+					<Record><PropertyValue Property="Text" String="Drafts"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="MaintenanceNotification"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String=""/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="PhaseRejected">
+					<Record><PropertyValue Property="Text" String="Rejected"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="ConcatenatedActiveUserStsName"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="I0527"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="PhaseSubmitted">
+					<Record><PropertyValue Property="Text" String="Submitted"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="NotifProcessingPhase"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="1"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="ConcatenatedActiveUserStsName"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/E"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="I052R"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="PhaseCompleted">
+					<Record><PropertyValue Property="Text" String="Completed"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="NotifProcessingPhase"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="4"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="ConcatenatedActiveUserStsName"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/E"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="I0527"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="PhaseActionReqd">
+					<Record><PropertyValue Property="Text" String="Action Required"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="ConcatenatedActiveUserStsName"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="I052R"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="PhaseInProcess">
+					<Record><PropertyValue Property="Text" String="Accepted"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="ConcatenatedActiveSystStsName"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="I0070"/></Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWrkReqDamageCodeGroupVHType/CodeGroupStatus"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_MaintWrkReqDamageCodeGroupVHType/CatalogProfile"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_PMWorkCenterVHType/WorkCenterInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_PMWorkCenterVHType/WorkCenterTypeCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_PMWorkReqReporterVHType/UserID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_PMWorkReqReporterVHType/FullName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechnicalObjectVHType/TechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechnicalObjectVHType/TechObjIsEquipOrFuncnlLoc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechnicalObjectVHType/TechObjInstallationLocation"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/TechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/TechObjIsEquipOrFuncnlLoc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/ValidityEndDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/EquipUsagePeriodSequenceNumber"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/ValidityEndTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/ValidityStartDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/TechnicalObjectLabel"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/TechnicalObjectDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/HierarchyNodeUniqueID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/ParentNodeUniqueID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/HierarchyNodeLevel"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/DrillDownState"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType/LocationName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjCstmHierVHType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Custom Entity for Technical Object Hierarchy VH"/><PropertyValue Property="TypeNamePlural" String="Technical Objects"/></Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AssetManufacturerName"/></Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/TechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/TechnicalObjectDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/SuperiorTechnicalObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/SuperiorObjIsEquipOrFuncnlLoc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/ABCIndicatorDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/AuthorizationGroup"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/BusinessArea"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/BusinessAreaName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CatalogProfile"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CompanyCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CompanyCodeName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/ControllingArea"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/ControllingAreaName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CostCenter"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CostCenterDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/WorkCenterTypeCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/WorkCenterText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/MainWorkCenterText"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/MaintenancePlantName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/AssetManufacturerName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/ManufacturerPartTypeName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/MaintenancePlanningPlantName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/MaintenancePlannerGroupName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/PlantSectionPersonRespName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/AssetRoom"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/TechnicalObjectCategory"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/TechnicalObjectCategoryDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/AcquisitionValue"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/Currency"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CreatedByUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/CreationDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/LastChangedByUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/LastChangeDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/Division"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/DivisionName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/LocationName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/TechObjIsEquipOrFuncnlLocDesc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/TechObjInstallationLocation"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/HierarchyNodeLevel"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/ConcatenatedActiveSystStsName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_TechObjFlatVHType/MaintObjectInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.C_WorkReqTextTemplateVHType/LongTextLanguage"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftUUID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftEntityType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftAccessType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/ProcessingStartDateTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftIsKeptByUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/EnqueueStartDateTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftIsCreatedByMe"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftIsLastChangedByMe"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/DraftIsProcessedByMe"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/CreatedByUserDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/LastChangedByUserDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_DraftAdministrativeDataType/InProcessByUserDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_PersWrkAgrmtSrchHelpType/PersonWorkAgrmtAuthznGrpg"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_PersWrkAgrmtSrchHelpType/AuthorizationGroup"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_PersWrkAgrmtSrchHelpType/IsBusinessPurposeCompleted"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_PMNotificationPriorityType/MaintPriorityColorCode"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_PMNotificationPriorityType/MaintPriority">
+				<Annotation Term="Common.Text" Path="MaintPriority_Text"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjIsEquipOrFuncnlLocType/TechObjIsEquipOrFuncnlLoc">
+				<Annotation Term="Common.Text" Path="TechObjIsEquipOrFuncnlLoc_Text"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/TechnicalObjectThumbnailURL"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/MaintObjectInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/FunctionalLocationName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/FuncnlLocPrimaryLabelName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/IdentifyingLabel"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/SecondIdentifyingLabel"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/TechObjectWithLeadingZeros"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/MaintObjectLocAcctAssgmtNmbr"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/TechObjIsEquipOrFuncnlLoc">
+				<Annotation Term="Common.Text" Path="TechObjIsEquipOrFuncnlLoc_Text"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/FunctionalLocationLabelName">
+				<Annotation Term="Common.Text" Path="FunctionalLocationName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/TechnicalObjectCategory">
+				<Annotation Term="Common.Text" Path="TechnicalObjectCategory_Text"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/TechnicalObjectType">
+				<Annotation Term="Common.Text" Path="TechnicalObjectType_Text"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/MaintenancePlant">
+				<Annotation Term="Common.Text" Path="PlantName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType/AssetLocation">
+				<Annotation Term="Common.Text" Path="LocationName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.I_TechObjWorkReqQuickVwType">
+				<Annotation Term="UI.QuickViewFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechObjQuickView"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="TechObjQuickView">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechObjIsEquipOrFuncnlLoc"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectCategory"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaintenancePlant"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FunctionalLocationLabelName"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Technical Object"/><PropertyValue Property="TypeNamePlural" String="Technical Objects"/><PropertyValue Property="TypeImageUrl" String="sap-icon://technical-object"/><PropertyValue Property="ImageUrl" Path="TechnicalObjectThumbnailURL"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectDescription"/></Record>
+						</PropertyValue>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectLabel"/></Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/RejectMaintWorkRequest/NotificationType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/RejectMaintWorkRequest/TextObjectCategory"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations
+				Target="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/RejectMaintWorkRequest/MaintNotifLongTextForEdit"><Annotation Term="UI.MultiLineText"/></Annotations>
+			<Annotations
+				Target="cds_ui_maintworkrequestoverview.cds_ui_maintworkrequestoverview_Entities/SetMaintNotifToInfoRequired/MaintNotifLongTextForEdit"><Annotation Term="UI.MultiLineText"/></Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

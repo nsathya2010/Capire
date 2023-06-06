@@ -1,0 +1,13 @@
+{
+  "application": "orion.maintreq.manage",
+  "version": "10.0.4",
+  "buildNumber": "129",
+  "buildId": "129",
+  "branch": "s4op-2022sp0",
+  "revision": "adf8e85b03714d2d89c54becdc53fdaaac809765",
+  "GitURL": "",
+  "buildStatus": "P",
+  "translationComplete": "true",
+  "cidi": "",
+  "cfdCM": ""
+}

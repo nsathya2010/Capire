@@ -1,0 +1,100 @@
+const arr = [
+  ['John', 'Doe', '25'],
+  ['Jane', 'Doe', '30'],
+  ['Bob', 'Smith', '40'],
+  ['Alice', 'Wonderland', '20']
+];
+
+const regex = /^[FO].R.*/; // regular expression to match strings that start with "F" or "O", followed by any single character, and "R"
+
+const filteredArr = arr.filter(item => regex.test(item[1]));
+
+console.log(filteredArr);
+
+///////////////////////////////
+
+var sPath = "/I_TECHOBJ";
+var oFilter = new sap.ui.model.Filter("plant", sap.ui.model.FilterOperator.EQ, "011W");
+
+this.getView().getModel().read(sPath, {
+  filters: [oFilter],
+  success: function(oData, response) {
+    // Handle successful read operation
+    console.log(oData.results); // Output: An array of objects that match the filter criteria
+  },
+  error: function(error) {
+    // Handle error
+    console.log(error);
+  }
+});
+////////////////////////////////////
+
+
+var sPath = "/I_TECHOBJ";
+var oFilter = new sap.ui.model.Filter("plant", sap.ui.model.FilterOperator.EQ, "011W");
+
+this.getView().getModel().read(sPath, {
+  filters: [oFilter],
+  success: function(oData, response) {
+var regex = /^[FO].R.*/; // regular expression to match strings that start with "F" or "O", followed by any single character, and "R"
+
+var filteredData = oData.results.filter(function(item) {
+  return regex.test(item.Location);
+});
+  },
+  error: function(error) {
+    // Handle error
+    console.log(error);
+  }
+});
+
+//////////////////////////////////////////////
+
+
+
+var sPath = "/I_TECHOBJ";
+//var oFilter = new sap.ui.model.Filter("plant", sap.ui.model.FilterOperator.EQ, "011W");
+
+var oTextField = this.byId("IdPlant");
+var sPlant = oTextField.getValue();
+var oFilter = new sap.ui.model.Filter("plant", sap.ui.model.FilterOperator.EQ, sPlant);
+
+
+this.getView().getModel().read(sPath, {
+  filters: [oFilter],
+  success: function(oData, response) {
+var regex = /^[FO].R.*/; // regular expression to match strings that start with "F" or "O", followed by any single character, and "R"
+
+var filteredData = oData.results.filter(function(item) {
+  return regex.test(item.Location);
+});
+
+var oDropDown = this.byId("iDDrop");
+oDropDown.setLabel("dummy");
+oDropDown.removeAllItems();
+
+for (var i = 0; i < filteredData.length; i++) {
+  var oItem = new sap.ui.core.Item({
+    key: filteredData[i].Location,
+  text: oItem.Location.substring(0, 5)  
+//text: filteredData[i].Location
+  });
+  oDropDown.addItem(oItem);
+}
+
+oDropDown.attachChange(function(oEvent) {
+  var selectedItem = oEvent.getSource().getSelectedItem();
+  var selectedLocation = selectedItem ? selectedItem.getKey() : "";
+  console.log(selectedLocation);
+});
+  },
+  error: function(error) {
+    // Handle error
+    console.log(error);
+  var oTextField = this.byId("iDtechObj");
+  oTextField.setValue(selectedLocation);
+// oTextField.fireEvent("selectionChange");
+  }
+});
+
+

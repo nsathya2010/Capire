@@ -9,4 +9,9 @@ Content-Type: application/json
     }
 }
 
+###Read service metadata
+GET http://localhost:4004/pack-spec/generateQuoteId()
+
+
+###Read service metadata
 cds deploy --to sql:sathya.db

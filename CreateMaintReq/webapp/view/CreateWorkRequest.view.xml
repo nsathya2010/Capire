@@ -1,0 +1,239 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" controllerName="orion.maintreq.manage.controller.CreateWorkRequest"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:native="sap.ndc"
+	xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:layout="sap.ui.layout"
+	xmlns:smarttable="sap.ui.comp.smarttable">
+	<Page showHeader='false' id="createWorkRequestPage" floatingFooter="true">
+		<content>
+			<IconTabBar id="idIconTabBar" select="onSelectTab" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="idIcontab1" icon="sap-icon://create-form" text="Uusi pyyntö" key="tab1">
+						<HBox id="_hbox1" direction="RowReverse">
+							<Button id="helpButton" icon="sap-icon://question-mark" press="onPressHelpButton"/>
+						</HBox>
+						<Panel id="createWrHigLevelPanel" headerText="{i18n>xtit.PageHeader}" class="removePanelBorder sapUiMediumPadding">
+							<Text id ="idtxt"></Text>
+							<Panel id="createWrTechnicalDataPanel" headerText="{i18n>xtit.technicalData}" expandable="true" expanded="true">
+								<HBox width="100%" id="messageStrip" class="messageStripWidth" visible="{= %{viewProperties>/currentWorkRequests} > 0 &amp;&amp; %{TechnicalObject} !== '' &amp;&amp; %{TechnicalObject} !== null &amp;&amp; %{TechObjIsEquipOrFuncnlLoc} !== '' }">
+									<core:Fragment fragmentName="orion.maintreq.manage.view.fragments.CurrentWorkRequestsWarning" type="XML"/>
+								</HBox>
+								<smartForm:SmartForm id="createWrSmartFormTechnical" editable="true" flexEnabled="false" class="formHiddenTitle">
+									<smartForm:layout>
+										<smartForm:Layout id="createWrSmartFormLayout" emptySpanL="3" emptySpanM="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"/>
+									</smartForm:layout>
+									<smartForm:Group id="createWrSmartGroupTechnicalData">
+										<smartForm:GroupElement id="idCust0" visible="true">
+											<smartField:SmartField id="idNotificationType" enabled="false" editable="false" textLabel="Notification Type" visible="false" placeholder="NotificationType" value="{NotificationType}"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="idCust1" visible="true">
+											<smartField:SmartField id="idMaintPlant" textLabel="Tehdas" placeholder="Tehdas" value="{MaintenancePlanningPlant}" visible="false" enabled="false" change="onPlantSelection"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="idCust2" visible="true">
+											<f:SimpleForm id="form" editable="true">
+												<f:content>
+													<Label id="_IDGenLabel0" text="Tehdas" showColon="true" labelFor="idMaintBuilding" textAlign="Center" visible="true" class=""/>
+													<ComboBox id="idMaintPlantDrop" placeholder="Tehdas" selectionChange="onPlantSelectionDropDown" visible="true" enabled="true" />
+													<Label id="_IDGenLabel1" text="Rakennus" showColon="true" labelFor="idMaintBuilding" textAlign="Center" class=""/>
+													<ComboBox id="idMaintBuilding" placeholder="Rakennus" selectionChange="OnTecObjSelected" />
+												</f:content>
+											</f:SimpleForm>
+										</smartForm:GroupElement>
+
+										<smartForm:GroupElement id="createWrSmartGroupElementTechnicalObject">
+											<smartField:SmartField enabled="false" clientSideMandatoryCheck ="true" mandatory="true"  textInEditModeSource="ValueListNoValidation" textLabel="{i18n>xtit.technicalData}" id="createWrSmartFieldTechObj" 
+											placeholder="{i18n>xfld.technicalObject}" value="{TechnicalObjectLabel}" showSuggestion="false" showValueHelp="false" change=".onTechnicalObjectChanged">
+												<smartField:layoutData >
+													<layout:GridData id="createWrlayoutTechnicalObject" spanL="{= %{device>/system/desktop} ? 6 : 5 }" spanM="{= %{device>/system/desktop} ? 6 : 5 }" spanS="{= %{device>/system/desktop} ? 12 : 10 }"/>
+												</smartField:layoutData>
+											</smartField:SmartField>
+											<native:BarcodeScannerButton id="createWrBarCodeScanner" provideFallback="false" scanSuccess=".onScanSuccess">
+												<native:layoutData>
+													<layout:GridData id="createWrLayoutBarCodeScanner" spanL="1" spanM="1" spanS="2"/>
+												</native:layoutData>
+											</native:BarcodeScannerButton>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementLocation" label="{AssetLocation/#@sap:label}" visible="false">
+											<Text id="createWrLocation" text="{ parts: [ { path:'LocationName' },{ path:'AssetLocation' },{path:'TechnicalObject'} ] , formatter:'.formatter._concatIdAndDescription' }"/>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElemntCurrentLocation" visible="false">
+											<smartField:SmartField id="customLocationFormInput" placeholder="{i18n>xfld.currentLocation}" value="{LocationDescription}"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElement" visible="false">
+											<smartField:SmartField id="createWrSmartFieldFailureModeGroup" value="{MaintNotificationCodeGroup}" placeholder="{i18n>xfld.FailureModeGroup}" change=".onFailureModeGroupChanged">
+												<smartField:configuration>
+													<smartField:Configuration id="createWrFailureModeGroupControlConfiguration" controlType="dropDownList" displayBehaviour="descriptionAndId"/>
+												</smartField:configuration>
+											</smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementFailureMode" visible="false">
+											<smartField:SmartField id="createWrSmartFieldFailureMode" value="{MaintNotificationCode}" placeholder="{i18n>xfld.failureMode}" change=".onFailureModeChanged">
+												<smartField:configuration>
+													<smartField:Configuration id="createWrFailureModeControlConfiguration" controlType="dropDownList" displayBehaviour="descriptionAndId"/>
+												</smartField:configuration>
+											</smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementDetectionCode" visible="{=!!${MaintNotifDetectionCatalog} }">
+											<smartField:SmartField id="createWrSmartFieldDetectionCode" innerControlsCreated="._sortDetectionCodes" value="{MaintNotifDetectionCode}" change="_onDetectionCodeChanged">
+												<smartField:configuration>
+													<smartField:Configuration id="createWrDetectionCodeControlConfiguration" controlType="dropDownList"/>
+												</smartField:configuration>
+											</smartField:SmartField>
+											<Text id="createWrFieldDetectionCodeGroup" text="{MaintNotifDetectionCodeGrpTxt}" enabled="false" editable="false">
+
+											</Text>
+
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementMalfunctionEffect" visible="false">
+											<smartField:SmartField id="createWrSmartFieldMalEffect" value="{MalfunctionEffect}" placeholder="{i18n>xfld.malEffect}" change=".onEffectChanged"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementBreakDown" visible="false">
+											<smartField:SmartField id="createWrSmartFieldBreakDown" value="{MaintenanceObjectIsDown}"/>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementMalfunctionStartDate" visible="false">
+											<smartField:SmartField id="createWrSmartFieldMalfunctionStartDateTime" value="{MalfunctionStartDateTime}"></smartField:SmartField>
+										</smartForm:GroupElement>
+									</smartForm:Group>
+								</smartForm:SmartForm>
+							</Panel>
+							<Panel id="createWrPanelGeneral" headerText="{i18n>xtit.genData}" expandable="true" expanded="true">
+								<!--<HBox width="100%" id="messageStripNotifProcessingContext" class="messageStripWidth"-->
+								<!-- visible="{= %{MaintNotifProcessingContext} !== '' &amp;&amp; %{MaintNotifProcessingContext} !== null }">-->
+								<!--	<core:Fragment id="notifProcessingCntxtFragment" fragmentName="orion.maintreq.manage.view.fragments.NotificationProcessingContextWarning" type="XML"/>-->
+								<!--</HBox>-->
+								<smartForm:SmartForm id="createWrSmartFormGeneral" editable="true" flexEnabled="false">
+									<smartForm:layout>
+										<smartForm:Layout id="createWrSmartFormLayoutGeneral" emptySpanL="3" emptySpanM="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"/>
+									</smartForm:layout>
+									<smartForm:Group id="createWrSmartGroupGeneral">
+										<smartForm:GroupElement id="createWrSmartGroupElementNotifProcessingContext" visible="false">
+											<smartField:SmartField id="createWrSmartFieldNotifProcessingContext" value="{ path: 'MaintNotifProcessingContext' }" placeholder="{i18n>xfld.notifProcessingCntxt}" showValueHelp="false" change="_evaluateNotifProcessingContext">
+												<smartField:configuration>
+													<smartField:Configuration id="createWrNotifProcessingCntxtFieldControlConfiguration" controlType="dropDownList"/>
+												</smartField:configuration>
+											</smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementTitle">
+											<smartField:SmartField id="createWrSmartFieldTitle" textLabel="{i18n>xfld.descriptionLabel}" mandatory="true" clientSideMandatoryCheck="false" value="{ path: 'NotificationText'}" placeholder="{i18n>xfld.title}"></smartField:SmartField>
+										</smartForm:GroupElement>
+
+
+										<smartForm:GroupElement id="createWrSmartGroupElementMainWC" visible="{=${viewProperties>/emergencyNotification}}">
+											<smartField:SmartField id="createWrSmartFieldMainWC" textInEditModeSource="ValueListNoValidation" mandatory="true" clientSideMandatoryCheck="false" value="{ path: 'MainWorkCenter'}" placeholder="{i18n>xfld.mainWrkCenter}"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementMainWCPlant" visible="{=${viewProperties>/emergencyNotification}}">
+											<smartField:SmartField id="createWrSmartFieldMainWCPlant" textInEditModeSource="ValueListNoValidation" mandatory="true" clientSideMandatoryCheck="false" value="{ path: 'MainWorkCenterPlant'}"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementMaintPlanningPlant" visible="{=${viewProperties>/emergencyNotification}}">
+											<smartField:SmartField id="createWrSmartFieldMaintPlanningPlant" textInEditModeSource="ValueListNoValidation" mandatory="true" clientSideMandatoryCheck="false" value="{ path: 'MaintenancePlanningPlant'}" placeholder="{i18n>xfld.maintPlanPlant}"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementMaintOrderType" visible="{=${viewProperties>/emergencyNotification}}">
+											<smartField:SmartField id="createWrSmartFieldMaintOrderType" clientSideMandatoryCheck="false" value="{ path: 'MaintenanceOrderType'}" placeholder="{i18n>xfld.orderType}" editable="false" enabled="false" displayBehaviour="descriptionAndId">
+												<!--<smartField:configuration>-->
+												<!--	<smartField:Configuration id="createWrOrderTypeFieldControlConfiguration" controlType="dropDownList" displayBehaviour="descriptionAndId"/>-->
+												<!--</smartField:configuration>-->
+											</smartField:SmartField>
+										</smartForm:GroupElement>
+
+
+										<smartForm:GroupElement id="createWrSmartGroupElementUseTemplate" label="{i18n>xfld.template}" visible="false">
+											<ComboBox id="createWrLinkUseTemplate" selectedKey="{WorkRequestTextTemplate}" editable="{longTextTemplates>/enabled}" items="{longTextTemplates>/templates}" busy="{longTextTemplates>/busy}" change=".onLongtextTemplateChanged">
+												<core:Item id="createWrLinkUseTemplateItem" key="{= ${longTextTemplates>WorkRequestTextTemplate}.toUpperCase() }" text="{longTextTemplates>WorkRequestTextTemplate}"/>
+											</ComboBox>
+
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementDescription">
+											<smartField:SmartField id="createWrNotifLongText" textLabel="Lisätiedot" width="100%" value="{MaintNotifLongTextForEdit}" placeholder="{i18n>xfld.description}" change=".onLongTextChanged"></smartField:SmartField>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementPriority" label='{MaintPriority/#@sap:label}' visible="false">
+											<smartField:SmartField id="createWrPriorityField" value="{ path: 'MaintPriority' }" placeholder="{i18n>xfld.priority}" innerControlsCreated="._sortPriority" showValueHelp="false" change=".onPriorityChanged">
+												<smartField:configuration>
+													<smartField:Configuration id="createWrPriorityFieldControlConfiguration" controlType="dropDownList" />
+												</smartField:configuration>
+											</smartField:SmartField>
+											<Button id="createWrButtonShowEPM" tooltip="{i18n>xbut.showEPM}" text="{i18n>xbut.showEPM}" press=".onShowEPM" visible="false" enabled="{= %{MaintenancePlant} !== '' &amp;&amp; %{NotificationType} !== '' &amp;&amp; %{TechnicalObject} !== '' &amp;&amp; %{TechnicalObject} !== null &amp;&amp; %{TechObjIsEquipOrFuncnlLoc} !== '' }"/>
+										</smartForm:GroupElement>
+										<smartForm:GroupElement id="createWrSmartGroupElementReportedBy">
+											<smartField:SmartField textLabel="Yhteyshenkilö" textInEditModeSource="ValueListNoValidation" id="createWrSmartFieldReportedByUser" value="{ReportedByUser}" showValueHelp="true"></smartField:SmartField>
+										</smartForm:GroupElement>
+									</smartForm:Group>
+								</smartForm:SmartForm>
+							</Panel>
+							<Panel id="createWrPanelReponsibillities" headerText="{i18n>xtit.resp}" expandable="true" expanded="true" visible="false">
+								<smartForm:SmartForm id="createWrSmartFormResponsibilities" editable="true" flexEnabled="false">
+									<smartForm:layout>
+										<smartForm:Layout id="createWrSmartFormLayoutReponsibillities" emptySpanL="3" emptySpanM="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"/>
+									</smartForm:layout>
+									<smartForm:Group id="createWrSmartGroupResponsibillities">
+										<smartForm:GroupElement id="createWrSmartGroupElementCreatedBy" label="{CreatedByUser/#@sap:label}">
+											<Text id="createWrCreatedBy" text="{ parts: [ { path:'viewProperties>/createdByUserName' },{ path:'CreatedByUser' } ] , formatter:'.formatter._concatIdAndDescription' }"></Text>
+										</smartForm:GroupElement>
+										<!--<smartForm:GroupElement id="createWrSmartGroupElementReportedBy">
+								<smartField:SmartField textInEditModeSource="ValueListNoValidation" id="createWrSmartFieldReportedByUser" value="{ReportedByUser}" showValueHelp="true"></smartField:SmartField>
+							</smartForm:GroupElement>-->
+										<smartForm:GroupElement id="createWrSmartGroupElementReportedOn">
+											<smartField:SmartField id="createWrSmartFieldReportedOnDateTime" value="{NotificationCreationDateTime}"></smartField:SmartField>
+										</smartForm:GroupElement>
+									</smartForm:Group>
+								</smartForm:SmartForm>
+							</Panel>
+							<layout:VerticalLayout id="createWrVeritcalLayout" width="100%">
+								<core:ComponentContainer id="workRequestCreateAttachSrvCompContCreate" propagateModel="true" usage="attachmentReuseComponent"></core:ComponentContainer>
+							</layout:VerticalLayout>
+						</Panel>
+
+					</IconTabFilter>
+					<IconTabFilter id="idIcontab2" icon="sap-icon://activity-individual" text="Omat pyynnöt" key="tab2">
+						<HBox id="idHB1">
+							<RadioButtonGroup id="idRBgroup" columns="3" select="onSelectPhaseFiltersRadioButtonSelect">
+								<RadioButton id="idOutstanding" text="Odottavat" selected="true" />
+								<RadioButton id="idCompleted" text="Aloitetut" />
+								<RadioButton id="idAccepted" text="Valmiit" />
+							</RadioButtonGroup>
+						</HBox>
+						<smarttable:SmartTable id="idSmartTable" useVariantManagement="true" showRowCount="true" beforeRebindTable="onBeforeRebindTable" showTablePersonalisation="false" enableAutoBinding="true" initiallyVisibleFields="MaintenanceNotification,RequiredStartDate,TechnicalObjectLabel,MaintNotificationLongText" tableType="ResponsiveTable" enableAutoColumnWidth="true" showDetailsButton="true">
+							<Table id="idMainReqTable" mode="SingleSelectMaster" alternateRowColors="true" growing="true">
+								<!-- <columns>
+									<Column id="idCol1">
+										<customData>
+											<core:CustomData key="p13nData"/>
+										</customData>
+										<Text id="IdColText" text="Maintenance Notification"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem id="__CLI1">
+										<cells>
+											<Link id="__t1" text="{MaintenanceNotification}" press="onNavToMaintNotif"/>
+										</cells>
+									</ColumnListItem>
+								</items> -->
+							</Table>
+						</smarttable:SmartTable>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+
+
+		</content>
+		<footer>
+			<OverflowToolbar id="createWrOverflowToolbar">
+				<Button id="createWrMessageIndicator" text="{= ${message>/}.length }" visible="{=!!${message>/}.length}" icon="{ path: 'message>/', formatter: '.formatter.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.formatter.buttonTypeFormatter' }" enabled="true" press="onMessagesButtonPress"></Button>
+				<DraftIndicator id="createWrDraftIndicator"></DraftIndicator>
+				<ToolbarSpacer id="createWrOverflowToolbarSpacer"/>
+				<Button id="createWrSubmitButton" tooltip="{i18n>xbut.submit}" text="{i18n>xbut.submit}" type="Emphasized" enabled="true" visible="true" press="onPressSave"/>
+				<Button id="createWrCancelButton" tooltip="{i18n>xbut.cancel}" text="{i18n>xbut.cancel}" press="onPressCancel"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

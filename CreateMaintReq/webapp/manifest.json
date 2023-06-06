@@ -1,0 +1,256 @@
+{
+    "_version": "1.11.0",
+    "sap.app": {
+        "_version": "1.5.0",
+        "id": "orion.maintreq.manage",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "10.0.4"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "PM-FIO",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.40.12",
+            "toolsId": "26accbfd-373e-4b92-ba36-6b7a22106e96"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/UI_MAINTWORKREQUESTOVW_V2",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/mainService/metadata.xml",
+                    "annotations": [
+                        "UI_MAINTWORKREQUESTOVW_V2_VAN",
+                        "annotation1"
+                    ]
+                }
+            },
+            "prioritizationService": {
+                "uri": "/sap/opu/odata4/sap/ui_prioritization_profile/srvd_a2x/sap/ui_prioritization_profile/0001/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0",
+                    "localUri": "localService/EventPrioritizationMetadata.xml"
+                }
+            },
+            "UI_MAINTWORKREQUESTOVW_V2_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='UI_MAINTWORKREQUESTOVW_V2_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/mainService/UI_MAINTWORKREQUESTOVW_V2_VAN.xml"
+                }
+            },
+            "annotation1": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation1.xml",
+                "settings": {
+                    "localUri": "annotations/annotation1.xml"
+                }
+            },
+            "ZPM_MAINT_NOTIF_SEND_MAIL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZPM_MAINT_NOTIF_SEND_MAIL_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZPM_MAINT_NOTIF_SEND_MAIL_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.5.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "_version": "1.5.0",
+        "flexEnabled": true,
+        "rootView": {
+            "id": "app",
+            "viewName": "orion.maintreq.manage.view.App",
+            "type": "XML",
+            "async": true
+        },
+        "dependencies": {
+            "minUI5Version": "1.102.4",
+            "components": {
+                "sap.se.mi.plm.lib.attachmentservice.attachment": {
+                    "lazy": true
+                }
+            },
+            "libs": {
+                "sap.ui.layout": {
+                    "lazy": false
+                },
+                "sap.ui.core": {
+                    "lazy": false
+                },
+                "sap.m": {
+                    "lazy": false
+                },
+                "sap.ui.comp": {
+                    "lazy": false
+                },
+                "sap.ui.table": {
+                    "lazy": false
+                },
+                "sap.ndc": {
+                    "lazy": false
+                },
+                "sap.ui.generic.app": {
+                    "lazy": false
+                },
+                "sap.se.mi.plm.lib.attachmentservice": {
+                    "lazy": true
+                },
+                "sap.s4h.cfnd.featuretoggle": {
+                    "lazy": true
+                }
+            }
+        },
+        "componentUsages": {
+            "attachmentReuseComponent": {
+                "name": "sap.se.mi.plm.lib.attachmentservice.attachment",
+                "settings": {
+                    "id": "attachmenSserviceEmbComponent"
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "orion.maintreq.manage.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "ZPM_MAINT_NOTIF_SEND_MAIL_SRV": {
+                "dataSource": "ZPM_MAINT_NOTIF_SEND_MAIL_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "orion.maintreq.manage.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "name": "RouteCreateWorkRequest",
+                    "pattern": "",
+                    "greedy": false,
+                    "target": [
+                        "TargetCreateWorkRequest"
+                    ]
+                },
+                {
+                    "name": "showCurrentWorkRequests",
+                    "pattern": "showCurrentWorkRequests",
+                    "parent": "draft",
+                    "greedy": false,
+                    "target": [
+                        "showCurrentWorkRequests"
+                    ]
+                },
+                {
+                    "name": "draft",
+                    "pattern": "CreateMaintenanceRequest/{DraftUUID}",
+                    "greedy": false,
+                    "target": [
+                        "TargetCreateWorkRequest"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetCreateWorkRequest": {
+                    "viewId": "CreateWorkRequestViewDisplay",
+                    "viewType": "XML",
+                    "viewLevel": 2,
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "CreateWorkRequest"
+                },
+                "showCurrentWorkRequests": {
+                    "viewId": "CurrentWorRequestView",
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewLevel": 4,
+                    "viewPath": "orion.maintreq.manage.view.fragments",
+                    "targetParent": "app",
+                    "controlId": "createWorkRequestPage",
+                    "viewName": "CurrentWorkRequests",
+                    "controlAggregation": "dependents",
+                    "clearAggregation": true,
+                    "parent": "TargetCreateWorkRequest"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "CreateMaintenanceRequestViewNotFound",
+                    "transition": "show"
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "_version": "1.1.0",
+        "registrationIds": [
+            "ZF1511A"
+        ],
+        "archeType": "transactional"
+    }
+}

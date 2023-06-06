@@ -1,0 +1,10 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="orion.maintreq.manage.controller.App" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="app">
+	</App>
+</mvc:View>
