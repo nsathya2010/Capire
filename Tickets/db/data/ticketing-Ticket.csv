@@ -1,0 +1,11 @@
+ID;title;description;priority;status;submittedAt;updatedAt;requestedBy_ID;assignedTo_ID;channel
+27a83bcd-88e7-43e0-a357-b84270360ddb;X-ray;Sierra Delta;859;X-ray Charlie;2022-09-09T08:54:04.623Z;2021-12-06T01:49:26.984Z;720664ff-ba30-4010-9a48-e3e3670cfd84;7659bf28-4ce9-49b0-adbd-b703719da021;Romeo
+ec2893f4-551a-4287-8373-0eb224355c4a;X-ray Charlie;Romeo;92;Hotel Echo;2022-04-05T09:29:18.812Z;2022-02-17T14:35:27.736Z;1c2dfd32-33a1-4daa-bfc9-816ce7891ce9;771e4a87-9cca-4536-8472-3c9a0e74e225;Echo Whiskey Golf
+5e3ef58c-e9de-43de-81d7-008406add2a9;Oscar;Victor Alfa Tango;124;Bravo Whiskey Romeo;2022-07-24T02:40:56.459Z;2019-11-16T05:53:05.793Z;87d84ed7-c470-4aa1-bc33-301e1a59deed;419d2b18-5bb5-474c-82cd-62539eaa5f69;Kilo Zulu Echo
+e352f6ee-0c4a-4d63-81d7-b22c4ab5f840;Yankee Lima;Kilo Mike X-ray;573;Whiskey;2021-10-12T08:28:07.329Z;2020-09-09T11:45:50.293Z;c0cd5194-7adf-46de-9e03-fdb198a1da09;86a29e08-e1bc-4f67-a580-be647721acf0;Bravo Whiskey Romeo
+f5ff2d1a-f1b0-4c71-ba8a-aa05566664de;Kilo;Java Whiskey Mike;660;Yankee November Mike;2020-09-14T18:19:47.495Z;2020-09-16T07:50:38.368Z;dce32a5e-5cf1-4c07-a3f2-6a854b858c52;3a294930-a6b6-4dfe-9c60-d459c7152b8f;Foxtrot
+bdad3cf3-c60c-4c0d-992b-17ab8b9bf42c;Mike Golf;Foxtrot;874;November;2018-02-07T19:01:13.046Z;2019-03-05T00:38:21.543Z;107983cc-4734-4297-9d16-104344c39d45;3e6815cd-b531-4973-bafa-edf6e6b61594;Uniform X-ray
+03fc3592-dca9-4d37-a219-e5952e015ff8;India Tango;Hotel Romeo Golf;363;Alfa Tango Yankee;2018-11-29T14:42:35.631Z;2021-06-30T03:55:19.841Z;8a83dd42-c17e-466c-bb13-b3515742e56c;1ab75ff4-dc46-442b-9bbe-fcfa59c3dcc9;Delta Mike
+691bc72e-98dd-434d-9a39-be8c3d345c6f;Victor;Golf India;8;X-ray Echo Lima;2018-02-20T17:01:58.326Z;2022-01-16T09:56:33.824Z;a4e449fe-dfba-4391-9811-8eb48e0b9186;b19f9e1c-05ac-45ac-926b-e83e8f0b2838;Zulu
+e3d5055b-f464-4b48-95c6-3f6f4a391757;Mike;Whiskey Echo;580;Kilo;2020-12-27T22:04:11.182Z;2022-03-02T09:18:18.094Z;303b6362-b55a-443f-ad65-4f1a44bcce0d;29eac402-cbfc-4ad1-b71d-eda894070edb;Delta Juliett Mike
+edbddb2e-d8ba-45fc-bc53-c628275e6c9d;Foxtrot Bravo;Uniform X-ray Golf;930;Juliett;2021-06-18T15:48:28.737Z;2022-05-15T07:02:24.977Z;97b63a1e-c320-4bc8-87b8-23e68ae2f06e;1d209727-d21b-4ce6-8cd0-7ec833753f4d;Delta November Java

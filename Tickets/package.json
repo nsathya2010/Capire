@@ -1,0 +1,30 @@
+{
+  "name": "Tickets",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "sqlite3": "5.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dbdeploy": "cds deploy --to sql:tickets.db",
+    "csngen": "cds compile db/tickets.cds --to csn --dest db/tickets.csn"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql",
+        "credentials": {
+          "database": "tickets.db"
+        }
+      }
+    }
+  }
+}
