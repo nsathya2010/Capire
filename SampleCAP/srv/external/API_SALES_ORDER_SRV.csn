@@ -1,0 +1,2681 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "API_SALES_ORDER_SRV": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrder": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Sales Order Header",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "notNull": true
+        },
+        "SalesOrderType": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order Type"
+        },
+        "SalesOrganization": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Organization"
+        },
+        "DistributionChannel": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.\n\nYou can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.You can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &quot;Wholesale&quot; distribution channel.For each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &quot;Food&quot; and &quot;Non-food&quot; divisions to the &quot;Wholesale&quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Distribution Channel"
+        },
+        "OrganizationDivision": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.\n\nA product or service is always assigned to just one division. From the point of view of sales and distribution, the use of divisions lets you organize your sales structure around groups of similar products or product lines. This allows the people in a division who process orders and service customers to specialize within a manageable area of expertise.If a sales organization sells food and non-food products through both retail and wholesaledistribution channels each distribution channel could then be further split into food and non-food divisions.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Division"
+        },
+        "SalesGroup": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "A group of sales people who are responsible for processing sales of certain products or services.\n\nBy using sales groups you can designate different areas of responsibility within a sales office. When you generate sales statistics, you can use the sales group as one of the selection criteria.If sales office personnel service both retail and wholesale markets, you can assign a sales group to each market.You assign each salesperson to a sales group in his or her user master record. You assign each customer to a particular sales group in the customer's master record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Group"
+        },
+        "SalesOffice": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "A physical location (for example, a branch office) that has responsibility for the sale of certain products or services within a given geographical area.\n\nWhen you create sales statistics, you can use a sales office as one of the selection criteria. When you print out order confirmations, you can include the address of the sales office.You can assign each customer to a sales office in the customer master record.Within a sales office you can establish sales groups (for example, departments) with specific sales responsibilities. Each person who works in the sales office can be assigned to a sales group in his or her user master record. Each customer can also be assigned to a particular sales group in the customer master record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Office"
+        },
+        "SalesDistrict": {
+          "type": "cds.String",
+          "length": 6,
+          "doc": "A geographical sales district or region.\n\nEach customer can be assigned to a sales district. You can use sales districts to apply pricing conditions. When you want to generate sales statistics, you can use sales districts as a selection criteria.The system can propose a value from the customer master record of the sold-to party. You can change the value manually in the document at the header or item level.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales District"
+        },
+        "SoldToParty": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "The customer who orders the goods or services. The sold-to party is contractually responsible for sales orders.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sold-to Party"
+        },
+        "CreationDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Created On",
+          "@sap.quickinfo": "Date on Which Record Was Created",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "CreatedByUser": {
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Created By",
+          "@sap.quickinfo": "Name of Person Who Created Object",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "LastChangeDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Changed On",
+          "@sap.quickinfo": "Date of Last Change",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "SenderBusinessSystemName": {
+          "type": "cds.String",
+          "length": 60,
+          "@sap.label": "Ext. Bus. Syst. ID",
+          "@sap.quickinfo": "External Business System ID",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ExternalDocumentID": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "External Document ID",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "LastChangeDateTime": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 7,
+          "doc": "The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).\n\nIn order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.Even if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.The internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.See also GET TIME STAMPA UTC time stamp in short form is also available.",
+          "@sap.label": "Time Stamp",
+          "@sap.quickinfo": "UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ExternalDocLastChangeDateTime": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 7,
+          "@sap.label": "External Revision",
+          "@sap.quickinfo": "Timestamp for Revision of External Calls",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PurchaseOrderByCustomer": {
+          "type": "cds.String",
+          "length": 35,
+          "doc": "Number that the customer uses to uniquely identify a purchasing document (e.g. an inquiry or a purchase order).\n\nThe number creates the link between the customer purchase order and the sales document that you create. You can use the number used by the customer during correspondence with the customer to find certain document information. If the number refers to a purchase order, you can also print it on the documents that you send to the customer (e.g. on the delivery note).",
+          "@sap.label": "Customer Reference"
+        },
+        "PurchaseOrderByShipToParty": {
+          "type": "cds.String",
+          "length": 35,
+          "doc": "Number used by the end customer for unique identification of the purchasing document (e.g. inquiry or purchase).\n\nThe number is the link between the end customer's purchase order and the sales documents that you have created. You can use the end customer's number for correspondence with the customer, in particular for finding certain document information. If the number refers to a purchase order, you can also print documents that you wish to send to the end customer, such as the delivery note.",
+          "@sap.label": "Purchase Order No.",
+          "@sap.quickinfo": "Ship-to Party's Purchase Order Number"
+        },
+        "CustomerPurchaseOrderType": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The way in which the sales document (the inquiry or sales order, for example) arrives from the customer.\n\nYou can record here whether the sales document arrived, for example, by telephone, mail, or fax.Enter one of the values predefined for your system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchase Order Type",
+          "@sap.quickinfo": "Customer Purchase Order Type"
+        },
+        "CustomerPurchaseOrderDate": {
+          "type": "cds.Date",
+          "doc": "The date that appears on the customer's purchase order. This date can be, for example, the date on which the customer created the purchase order.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Customer Ref. Date",
+          "@sap.quickinfo": "Customer Reference Date"
+        },
+        "SalesOrderDate": {
+          "type": "cds.Date",
+          "doc": "The date on which you want the sales document (the sales order, for example) to become effective for sales management purposes.\n\nWhen you want to generate a list of sales documents or sales statistics, the document date you enter determines which sales documents are selected. You can define the document date to meet the needs of your organization.For sales orders, for example, you can define the document date as the date when the order actually arrives at your offices. Alternatively, you could define it as the date when the order was written up by a field sales representative.The system proposes the current date. You can change it manually in the sales document.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Document Date",
+          "@sap.quickinfo": "Document Date (Date Received/Sent)"
+        },
+        "TotalNetAmount": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "The total value of all items in the sales document, after any discounts and surcharges are taken into account. The value is expressed in the document currency.",
+          "@sap.unit": "TransactionCurrency",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "TransactionCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "The currency that applies to the document (for example, to a sales order or an invoice).\n\nThe system proposes the document currency from the customer master record of the sold-to party. You can change the currency manually in the document. If you change the currency, the system recalculates prices for the entire document.",
+          "@sap.label": "Document Currency",
+          "@sap.quickinfo": "SD Document Currency",
+          "@sap.semantics": "currency-code"
+        },
+        "SDDocumentReason": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Indicates the reason for creating the sales document.\n\nYou can freely define order reasons according to the needs of your organization. When you generate sales statistics, you can use the order reason as one of the selection criteria.Enter one of the values predefined for your system. If you are creating a credit or debit memo request, you must enter an order reason.If the order reason specifies, for example, that a customer placed a sales order as a result of contact at a trade fair, you can later generate statistics for all sales orders that were placed at trade fairs.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Reason",
+          "@sap.quickinfo": "Order Reason (Reason for the Business Transaction)"
+        },
+        "PricingDate": {
+          "type": "cds.Date",
+          "doc": "The date that determines date-related pricing elements, such as conditions and foreign exchange rate.\n\nYou can use the pricing date as a selection criterion when you process billing documents collectively.The system proposes the current date. You can change it manually in the document. If you change the pricing date, the system recalculates pricing for the entire document. If the date is in the past, you receive a warning before you can continue.Determining the ProposalIn the order: You can customize the order type to determine a proposal, such as the current date or the requested delivery date as the pricing date.In the billing document: The billing date is proposed as the pricing date.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Pricing Date",
+          "@sap.quickinfo": "Date for Pricing and Exchange Rate"
+        },
+        "PriceDetnExchangeRate": {
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 5,
+          "@sap.label": "Exchange Rate",
+          "@sap.quickinfo": "Exchange Rate for Price Determination"
+        },
+        "RequestedDeliveryDate": {
+          "type": "cds.Date",
+          "doc": "The date on which the customer would like ordered goods to be delivered.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Requested Delivery Date"
+        },
+        "ShippingCondition": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "General shipping strategy for the delivery of goods from the vendor to the customer.\n\nYou can define shipping conditions in your system which correspond to the requirements of your company. You can specify a shipping condition in the customer master and in the vendor master.Shipping point determination (outbound delivery):The loading group, the plant and the shipping condition determine the shipping point that will be proposed by the system.Route determination (outbound delivery):Apart from the country and the geographical region of the shipping point, the ship-to party and the transportation group, the shipping condition determines the route that the system proposes in the order for the delivery of the goods. In the delivery, the route proposal also takes the weight group into account.A particular customer always requires immediate delivery. You enter the appropriate shipping condition into the customer master record. This means that when you process orders for this customer, the system automatically proposes the express mail room as a shipping point and the quickest way to the airport as a route.If a shipping condition has been assigned to a sales document type in Customizing, this condition will be proposed by the system in the corresponding sales document. If there is no assignment, the system copies the relevant data from the corresponding customer master record of the sold-to party. You cannot change this value during delivery processing. The shipping condition will not be copied from the delivery into the shipment. The shipping condition is one of several criteria for selecting deliveries when you create a shipment. You can enter a shipping condition manually in the shipment where it only serves as a characteristic for grouping shipments.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Shipping Conditions"
+        },
+        "CompleteDeliveryIsDefined": {
+          "type": "cds.Boolean",
+          "doc": "Indicates whether a sales order must be delivered completely in a single delivery or whether the order can be partially delivered and completed over a number of deliveries.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Complete Delivery",
+          "@sap.quickinfo": "Complete Delivery Defined for Each Sales Order?"
+        },
+        "ShippingType": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Shipping type (for example, by road or rail) that has been selected for the transportation of the goods for the shipment legs.\n\nDuring automatic shipment leg determination, all legs created or only the main, direct, or return legs are assigned to this shipping type, depending on the type of leg determination.You can enter the shipment type for the main, direct or return legs in the shipping header. The value is proposed depending on the requirement in the shipment type.By setting the status &quot;planned&quot;, you have the shipping type copied from the respective deliveries into the shipment header, provided:The shipping type is identical in all the deliveries.The shipping type in the shipment header is not already filled.See also: Leg determination",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Shipping Type"
+        },
+        "HeaderBillingBlockReason": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Indicates if the entire sales document is blocked for billing.\n\nThe system can propose the billing block according to the type of sales document. The billing block applies to the entire document. You can block or unblock the entire document manually in the header. If you want to block only a particular item, enter a value at the item level.You may want to apply a billing block to certain documents so that prices can be checked before further processing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Billing Block",
+          "@sap.quickinfo": "Billing Block in SD Document"
+        },
+        "DeliveryBlockReason": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Indicates if an entire sales document (a sales order, for example) is blocked for delivery.\n\nThe system can propose a delivery block on header level according to sales document type. Users can also enter a block manually. A block in the header applies to the entire sales document.The system only proposes a delivery block at header level if delivery blocks have been assigned to the corresponding delivery type using the Define Reasons for Blocking in Shipping and the Assign Blocking Reasons to Delivery Types configuration steps.Additional InformationUsers can also block a sales document manually at schedule line level.The settings made in these configuration steps do not influence any delivery blocks set at schedule line level.The system can block delivery automatically for certain sales document types (for example, sales orders without charge) where it is important that someone checks the details before shipping takes place.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Delivery Block",
+          "@sap.quickinfo": "Delivery Block (Document Header)"
+        },
+        "DeliveryDateTypeRule": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates when the ordered goods should be delivered.\n\nYou can choose one of the following options:The goods should be delivered on the requested delivery date or later. Note that there is no guarantee that the goods will not be delivered earlier.The goods must be delivered exactly on the confirmed delivery date.The goods must be delivered by the confirmed delivery date (that is, on the date or earlier).You can set the delivery date rule on header level to set a default for any items that you create afterwards.In Transportation Management (TM), this field has the following implications:If you want the goods to be delivered on the requested delivery date or later, the delivery date/time is used as the earliest requested delivery date/time of the freight unit which contains the sales order item.If you want the goods to be delivered on the confirmed delivery date, the start of the delivery date is used as the earliest acceptable delivery date/time and the end of the delivery date as the latest acceptable delivery date/time of the freight unit which contains the sales order item.If you want the goods to be delivered by the confirmed delivery date, the end of the delivery date is used as the latest acceptable delivery date/time of the freight unit which contains the sales order item.Note: If you want to the goods to be delivered on or by the confirmed delivery date, the system ignores the rule for pick-up and delivery window and the condition for pick-up and delivery window determination which you have defined in the freight unit type for the delivery stop.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Deliv Date Rule",
+          "@sap.quickinfo": "Delivery Date Rule"
+        },
+        "IncotermsClassification": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Commonly used trading terms that comply with the standards established by the International Chamber of Commerce (ICC).\n\nIncoterms specify internationally recognized procedures that the shipper and the receiving party must follow for the shipping transaction to be completed successfully.If goods are shipped through a port of departure, the appropriate Incoterm might be: FOB (&quot;Free On Board&quot;). You can provide further details (for example, the name of the port) in the secondary Incoterm field: FOB Boston, for example.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Incoterms",
+          "@sap.quickinfo": "Incoterms (Part 1)"
+        },
+        "IncotermsTransferLocation": {
+          "type": "cds.String",
+          "length": 28,
+          "doc": "Additional information for the primary Incoterm.\n\nIf the primary Incoterm is, for example, FOB (&quot;Free on Board&quot;), then the second field provides details of the port from which the delivery leaves (for example, &quot;FOB Boston&quot;).",
+          "@sap.label": "Incoterms (Part 2)"
+        },
+        "IncotermsLocation1": {
+          "type": "cds.String",
+          "length": 70,
+          "doc": "Provides additional information for the primary Incoterm. For Incoterms 2010, this field represents:\n\n1. For sea and inland waterway transport - Port of Shipment2. For any mode of transport - Place of Delivery 2010Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description Location 1 EXW Ex Works Place of DeliveryFCA Free Carrier Place of DeliveryCPT Carriage Paid To Place of DestinationCIP Carriage & Insurance Paid To Place of DestinationDAF Delivered at Frontier Place of DeliveryDDP Delivered Duty Paid Place of DestinationDDU Delivered Duty Unpaid Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 1 FAS Free Alongside Ship Port of ShipmentFOB Free On Board Port of ShipmentCFR Cost & Freight Port of DestinationCIF Cost Insurance & Freight Port of DestinationDEQ Delivered Eq Quay (Duty Paid) Port of DestinationDES Delivered Ex Ship Port of DestinationIf the primary incoterm is specified as FOB “Free on Board”, the second field provides details of the port from which the delivery leaves, such as FOB Boston.",
+          "@sap.label": "Incoterms Location 1"
+        },
+        "IncotermsLocation2": {
+          "type": "cds.String",
+          "length": 70,
+          "doc": "Provides additional information for the Incoterms. This field is only available for C-Clauses (if customized appropriately). Note the following for the incoterms versions below:\n\nNo Version:This field is disabledIncoterm Version 2000This field is disabled as part of standard delivery unless a customer decides to enable it by the way of Customizing for Sales and Distribution under Master Data -> Business Partners -> Customers -> Billing Document -> Incoterms -> Map Incoterms to Versions.Incoterm Version 2010For this version, the field represents:Sea and inland waterway transport - Port of DestinationAny mode of transport - Place of Destination2010 Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description Location 2CPT Carriage Paid To Place of DestinationCIP Carriage & Insurance Paid To Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 2CFR Cost & Freight Port of DestinationCIF Cost Insurance & Freight Port of Destination",
+          "@sap.label": "Incoterms Location 2"
+        },
+        "IncotermsVersion": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "An incoterms version is an edition containing a list of international terms for transportation that is defined by the International Chamber of Commerce (ICC).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Incoterms Version"
+        },
+        "CustomerPriceGroup": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "A grouping of customers who share the same pricing requirements.\n\nYou can define price groups according to the needs of your organization and create pricing records for each group. You can, for example, define a group of customers to whom you want to give the same kind of discount. You can assign a price group to an individual customer either in the customer master record or in the sales document.The system can propose the price group from the customer master record. You can change the proposed value manually in the sales document at both header and item level.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Price Group"
+        },
+        "PriceListType": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Identifies a price list or other condition type (for example, a surcharge or discount).\n\nYou can define price list types according to the needs of your own organization. Price list types can be grouped according to:the kind of price list (for example, wholesale or retail)the currency in which the price appearsthe number of the price list typeYou can use price list types to apply conditions during pricing or to generate statistics.In the customer master record, enter one of the values predefined for your system. The system proposes the value automatically during sales order processing. You can change the value manually in the sales document header.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Price List Type"
+        },
+        "CustomerPaymentTerms": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "Key for defining payment terms composed of cash discount percentages and payment periods.\n\nIt is used in sales orders, purchase orders, and invoices. Terms of payment provide information for:Cash managementDunning proceduresPayment transactionsData can be entered in the field for the terms of payment key in various ways as you enter a business transaction:In most business transactions, the system defaults the key specified in the master record of the customer/vendor in question.In some transactions (for example, credit memos), however, the system does not default the key from the master record. Despite this, you can use the key from the customer/vendor master record by entering &quot;*&quot; in the field.Regardless of whether or not a key is defaulted from the master record, you can manually enter a key during document entry at:item level in sales ordersheader level in purchase orders and invoicesMaster records have separate areas for Financial Accounting, Sales, and Purchasing. You can specify different terms of payment keys in each of these areas. When you then enter a business transaction, the application in question will use the key specified in its area of the master record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Terms of Payment",
+          "@sap.quickinfo": "Terms of Payment Key"
+        },
+        "PaymentMethod": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Payment method with which this item is to be paid.\n\nIf you enter a payment method, then only this payment method can be used in automatic payment transactions. Unless you enter a payment method, one of the payment methods that was allowed in the master record is selected in the payment program according to specified rules.For document entry or document changes, you only enter a payment method if you want to switch off the automatic payment method selection of the payment program.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Payment Method"
+        },
+        "FixedValueDate": {
+          "type": "cds.Date",
+          "doc": "The date on which the terms of payment related to the sales document become effective.\n\nIf you enter a date in this field, you cannot enter a value in the additional value days field.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Fixed Value Date"
+        },
+        "AssignmentReference": {
+          "type": "cds.String",
+          "length": 18,
+          "doc": "The allocation is additional information in the customer line item of the journal entry.\n\nThe line items of an account are displayed in sort sequence according to the content of the field.The allocation number is set in the billing document in accordance with control in document flow and transferred to the financial journal entry.It is possible to set the customer purchase order number, the customer order number, the delivery number or the external delivery number as allocation numbers.The field is a separating criterion in the billing document.",
+          "@sap.label": "Assignment",
+          "@sap.quickinfo": "Assignment Number"
+        },
+        "ReferenceSDDocument": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Identifies the sales order to which the delivery refers.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reference Document",
+          "@sap.quickinfo": "Document Number of the Reference Document"
+        },
+        "ReferenceSDDocumentCategory": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "Specifies the sales document category of the preceding sales, delivery, or billing document.",
+          "@sap.label": "Preceding Doc.Categ.",
+          "@sap.quickinfo": "Document Category of Preceding SD Document",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "AccountingDocExternalReference": {
+          "type": "cds.String",
+          "length": 16,
+          "doc": "The reference document number contains the document number with the business partner\n\nThe reference document number serves as a search criterion when displaying or changing documents. In correspondence, the refererence document number is sometimes printed instead of the document number.The reference number is set in the document flow according to control and taken into the financial journal entry.You can set the customer order number, the order number, the delivery number, the billing number or the external delivery number as reference number.The field is a seperation criterion in the billing document.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reference",
+          "@sap.quickinfo": "Reference Document Number"
+        },
+        "CustomerAccountAssignmentGroup": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The account assignment group to which the system automatically posts the sales document.\n\nThe system uses the account assignment group as one of the criteria during the automatic determination of revenue accounts.The system automatically proposes the account assignment group from the customer master record of the payer. You can change the default value in the sales document or the billing document.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Acct Assmt Grp Cust.",
+          "@sap.quickinfo": "Account Assignment Group for this Customer"
+        },
+        "AccountingExchangeRate": {
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 5,
+          "doc": "The exchange rate that the system applies when you create an invoice.\n\nYour system is configured in such a way that it expects:No prefix (leading sign) for direct ratesA &quot;&quot; as prefix (leading sign) for direct ratesNo prefix for indirect ratesA &quot;&quot; as prefix for indirect rates",
+          "@sap.label": "Exchng. Rate Accntg.",
+          "@sap.quickinfo": "Exchange rate for FI postings"
+        },
+        "CustomerGroup": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Identifies a particular group of customers (for example, wholesale or retail) for the purpose of pricing or generating statistics.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group"
+        },
+        "AdditionalCustomerGroup1": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Specifies a customer-defined group of customers.\n\nYou can define up to five different groups of customers, according to the needs of your organization. You specify the groups in the customer master record under &quot;Additional data&quot;. If you assign a particular customer to one or more groups, the system automatically displays the groups in the header data of corresponding sales orders.You can define customer groups in Tables TVV1 through TVV5 and assign them to specific languages in Tables TVV1T through TVV5T.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group 1"
+        },
+        "AdditionalCustomerGroup2": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Specifies a customer-defined group of customers.\n\nYou can define up to five different groups of customers, according to the needs of your organization. You specify the groups in the customer master record under &quot;Additional data&quot;. If you assign a particular customer to one or more groups, the system automatically displays the groups in the header data of corresponding sales orders.You can define customer groups in Tables TVV1 through TVV5 and assign them to specific languages in Tables TVV1T through TVV5T.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group 2"
+        },
+        "AdditionalCustomerGroup3": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Specifies a customer-defined group of customers.\n\nYou can define up to five different groups of customers, according to the needs of your organization. You specify the groups in the customer master record under &quot;Additional data&quot;. If you assign a particular customer to one or more groups, the system automatically displays the groups in the header data of corresponding sales orders.You can define customer groups in Tables TVV1 through TVV5 and assign them to specific languages in Tables TVV1T through TVV5T.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group 3"
+        },
+        "AdditionalCustomerGroup4": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Specifies a customer-defined group of customers.\n\nYou can define up to five different groups of customers, according to the needs of your organization. You specify the groups in the customer master record under &quot;Additional data&quot;. If you assign a particular customer to one or more groups, the system automatically displays the groups in the header data of corresponding sales orders.You can define customer groups in Tables TVV1 through TVV5 and assign them to specific languages in Tables TVV1T through TVV5T.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group 4"
+        },
+        "AdditionalCustomerGroup5": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Specifies a customer-defined group of customers.\n\nYou can define up to five different groups of customers, according to the needs of your organization. You specify the groups in the customer master record under &quot;Additional data&quot;. If you assign a particular customer to one or more groups, the system automatically displays the groups in the header data of corresponding sales orders.You can define customer groups in Tables TVV1 through TVV5 and assign them to specific languages in Tables TVV1T through TVV5T.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group 5"
+        },
+        "SlsDocIsRlvtForProofOfDeliv": {
+          "type": "cds.Boolean",
+          "doc": "This indicator controls proof of delivery (POD) processing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Relevant for POD",
+          "@sap.quickinfo": "Relevant for POD processing"
+        },
+        "CustomerTaxClassification1": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether the system takes account of taxes that are related to the customer for pricing (such as value-added tax).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the goods recipient. During pricing, the system uses the tax classification and the country key (which identifies the customer location) to determine the relevant taxes. You can enter a different (alternative) tax classification in the order.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Alt.Tax Classific.",
+          "@sap.quickinfo": "Alternative Tax Classification"
+        },
+        "CustomerTaxClassification2": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.2 Customer",
+          "@sap.quickinfo": "Tax Classification 2 for Customer"
+        },
+        "CustomerTaxClassification3": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.3 Customer",
+          "@sap.quickinfo": "Tax Classification 3 for Customer"
+        },
+        "CustomerTaxClassification4": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.4 Customer",
+          "@sap.quickinfo": "Tax Classification 4 for Customer"
+        },
+        "CustomerTaxClassification5": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.5 Customer",
+          "@sap.quickinfo": "Tax Classification 5 for Customer"
+        },
+        "CustomerTaxClassification6": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.6 Customer",
+          "@sap.quickinfo": "Tax Classification 6 for Customer"
+        },
+        "CustomerTaxClassification7": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.7 Customer",
+          "@sap.quickinfo": "Tax Classification 7 for Customer"
+        },
+        "CustomerTaxClassification8": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.8 Customer",
+          "@sap.quickinfo": "Tax Classification 8 for Customer"
+        },
+        "CustomerTaxClassification9": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether, during pricing, the system takes into account taxes that relate to the customer (for example, state sales taxes).\n\nThe system copies the tax classification from the tax information stored in the customer master record of the ship-to party. During pricing, the system uses the tax classification together with the country key (identifies where the customer is located) to calculate relevant taxes.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Class.9 Customer",
+          "@sap.quickinfo": "Tax Classification 9 for Customer"
+        },
+        "TaxDepartureCountry": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "For tax determination, the country of departure is used as the plant country.\n\nA different country needs to be entered for certain internal European transactions (chain transactions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Depart. Country",
+          "@sap.quickinfo": "Tax Departure Country"
+        },
+        "VATRegistrationCountry": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "For tax determination, the country of the ship-to party is used as the tax country of destination.\n\nA different country needs to be entered for certain internal European transactions (chain transactions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Dest. Country",
+          "@sap.quickinfo": "Tax Destination Country"
+        },
+        "SalesOrderApprovalReason": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "States in which cases an approval is needed.\n\nWhenever an approval request reason is set and the corresponding workflow is defined, the sales document is considered relevant for approvals. The approval request reason consists of an ID and a description.You define that for customer ABC, sales quotations always have to be approved. The system automatically sets this reason when a sales quotation for this customer is created. It cannot be released without sending it to an approver first.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Apprvl Req. Rsn ID",
+          "@sap.quickinfo": "Approval Request Reason ID",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "SalesDocApprovalStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "States whether a sales document is relevant for approvals and, if so, which approval stage it is in.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Approval Status",
+          "@sap.quickinfo": "Document Approval Status",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "OverallSDProcessStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "The processing status of the entire sales document.\n\nThe system determines the status of the entire sales document by taking into account the status of all header-related information and the status of all individual items. The status message tells you whether processing of the sales document is open, in progress, or complete.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Overall Status",
+          "@sap.quickinfo": "Overall Processing Status (Header/All Items)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "TotalCreditCheckStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Credit Status",
+          "@sap.quickinfo": "Overall Status of Credit Checks",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "OverallTotalDeliveryStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Ovrl Delivery Status",
+          "@sap.quickinfo": "Overall Delivery Status (All Items)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "OverallSDDocumentRejectionSts": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Displays the rejection status of the entire sales document.\n\nThe system determines the total status from the status of all individual items in the sales document. The status message tells you whether the sales document has been partially or completely rejected or whether nothing has been rejected.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Rejection Status",
+          "@sap.quickinfo": "Rejection Status (All Items)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "to_Item": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItem",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_Partner": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderHeaderPartner",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_PaymentPlanItemDetails": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SlsOrdPaymentPlanItemDetails",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_PricingElement": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderHeaderPrElement",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_Text": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderText",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderHeaderPartner": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Header Partner",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "PartnerFunction": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The abbreviated form of the name that identifies the partner function.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Partner Function",
+          "notNull": true
+        },
+        "Customer": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer",
+          "@sap.quickinfo": "Customer Number"
+        },
+        "Supplier": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Account Number of Supplier"
+        },
+        "Personnel": {
+          "type": "cds.String",
+          "length": 8,
+          "doc": "The personnel number is the only feature within a client which is unique to an employee. You have to enter a personnel number before you can display and maintain an employee's master data and time data.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Personnel Number"
+        },
+        "ContactPerson": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "The number that uniquely identifies the contact person.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Contact Person",
+          "@sap.quickinfo": "Number of contact person"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderHeaderPrElement": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Header Pricing Element",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "PricingProcedureStep": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Number that determines the sequence of the condition within a procedure.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Step Number",
+          "notNull": true
+        },
+        "PricingProcedureCounter": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Access number of the conditions within a step in the pricing procedure.\n\nDuring automatic pricing, the system takes into account the sequence specified by the counter.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Counter",
+          "@sap.quickinfo": "Condition Counter",
+          "notNull": true
+        },
+        "ConditionType": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The key that uniquely identifies the condition.\n\nThe condition type indicates, for example, whether, during pricing, the system applies a price, a discount, a surcharge, or other pricing elements, such as freight costs and sales taxes. For each of these pricing elements, there is a condition type defined in the system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Type"
+        },
+        "PricingDateTime": {
+          "type": "cds.String",
+          "length": 14,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Valid From",
+          "@sap.quickinfo": "Timestamp for Pricing",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionCalculationType": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Determines how the system calculates prices, discounts, or surcharges in a condition. For example, the system can calculate a price as a fixed amount or as a percentage based on quantity, volume, or weight.\n\nThe calculation type can be set when generating new condition records. If this does not happen, the calculation type maintained here is valid for the condition record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Calculation Type",
+          "@sap.quickinfo": "Calculation Type for Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionBaseValue": {
+          "type": "cds.Decimal",
+          "precision": 24,
+          "scale": 9,
+          "doc": "Defines the value in a business document that the system uses together with the condition amount to calculate the condition value for the price condition.\n\nDuring the pricing process in a business document, for each condition type used in the pricing procedure, the system calculates the condition value as follows:For several calculation types (for example, A, C, D, E, F, H, I, J, K, M, N, O, P, W), the system multiplies the condition amount with the condition basis to calculate the condition value.For several calculation types (for example, A, C, D, E, F, H, I, M, N, O, P), the system multiplies the condition amount with the condition basis to calculate the condition value.For several calculation types (for example, C, D, E, F, H, I, M, N, O, P), the value of the condition basis refers to a unit of measure. If the unit of measure of the conditions basis differs from the unit of measure of the price condition (condition unit), the system automatically converts it into the unit of measure of the condition unit. For calculation types C, M, N, O, and P, the item quantity is the default value for the condition basis.For several calculation types (for example, A, B, H, I, J, K, W), the condition basis is a currency field and refers to a currency key field. Such a currency field in the context of pricing is called currency amount. If the currency key of the conditions basis (currency amount) differs from the currency key of the document, the system automatically converts the condition basis (currency amount) into the currency of the document. The system uses the exchange rates for the currencies that are defined in the general settings for currencies.For several calculation types (for example, A, B, H, I), the condition basis is a currency field and refers to a currency key field. Such a currency field in the context of pricing is called currency amount. If the currency key of the conditions basis (currency amount) differs from the currency key of the document, the system automatically converts the condition basis (currency amount) into the currency of the document. The system uses the exchange rates for the currencies that are defined in the general settings for currencies.Note: The standard number of decimal places for a currency is two.Currencies that use a different number of decimal places must in addition be entered into table TCURX, where you can explicitly define the number of decimal places, for example, zero decimals for Japanese yen JPY.Deviations are preconfigured depending on the currency, for example, zero decimals for Japanese yen JPY.If you have defined scales, the system uses the condition basis to determine the valid scale line with the corresponding condition amount.In usage-based pricing models, the usage corresponds to the condition basis.The condition basis can be aQuantityWeightVolumeCurrency AmountA sales order includes an item with a quantity of 120 pieces:The determined list price of USD 101 (condition amount) multiplied with the quantity of 120 pieces (condition basis) results in a condition value of USD 12120.Two discounts are applied to the item of this sales order:The first discount (-1 USD / PC) is based on the quantity ordered that is the condition basis equals the item quantity and the result is - 120 USD.The second discount (- 2 %) is calculated as a percentage which is applied to the results of the list price (USD 12120) and the first discount (- 120 USD). Its result (12000 USD) is the condition basis for the second discount. The result of the second discount is - 240 USD.",
+          "@sap.label": "Condition Basis",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionRateValue": {
+          "type": "cds.Decimal",
+          "precision": 24,
+          "scale": 9,
+          "doc": "Determines how the system calculates prices using a specific condition.\n\nDepending on the condition type, it can be a fixed amount, a percentage, or per mille. If the condition includes a pricing scale, the condition amount or percentage displays the first line of the scale.The following examples illustrate how you can use the condition amount or percentage in different condition types:If you create a condition that includes prices (for example, prices for a material), you enter an amount.If you create a condition based on percentage, such as discounts or surcharges (for example, a customer-specific discount), you enter the value of a percentage. If the condition is a discount, the system automatically enters a minus sign behind the amount and a percent sign in the Condition Unit field.",
+          "@sap.label": "Amount",
+          "@sap.quickinfo": "Condition Amount or Percentage"
+        },
+        "ConditionCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "Currency key for amounts in the system.",
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code"
+        },
+        "ConditionQuantity": {
+          "type": "cds.Decimal",
+          "precision": 5,
+          "scale": 0,
+          "doc": "The quantity on which the amount or percentage is based. The quantity is expressed in sales units (for example, bottles).\n\nYou want to create a condition record for a material price of US$8 for 1 piece. You enter &quot;8&quot; in the Rate field, &quot;USD&quot; in the Unit field, and &quot;1&quot; as the condition pricing unit in this field.You create a condition record that gives a fixed discount of $10 to a customer who buys 1000 bottles. In this case, the condition pricing unit is 1000.",
+          "@sap.unit": "ConditionQuantityUnit",
+          "@sap.label": "Pricing Unit",
+          "@sap.quickinfo": "Condition Pricing Unit"
+        },
+        "ConditionQuantityUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Quantity unit, to which the condition amount or percentage refers.",
+          "@sap.label": "Condition Unit",
+          "@sap.quickinfo": "Condition Unit in the Document",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "ConditionQuantitySAPUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (SAP unit code) for the condition quantity.\n\nFor the condition quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.label": "SAP Condition Qty",
+          "@sap.quickinfo": "SAP Unit Code for Condition Quantity"
+        },
+        "ConditionQuantityISOUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (ISO code) for the condition quantity.\n\nFor the condition quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ISO Condition Qty",
+          "@sap.quickinfo": "ISO Unit Code for Condition Quantity"
+        },
+        "ConditionCategory": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "A classification of conditions according to pre-defined categories (for example, all conditions that relate to freight costs).",
+          "@sap.label": "Condition Category",
+          "@sap.quickinfo": "Condition Category (Examples: Tax, Freight, Price, Cost)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionIsForStatistics": {
+          "type": "cds.Boolean",
+          "doc": "This indicator causes a surcharge or discount to be set in the document statistically (that is, without altering the value).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Statistical",
+          "@sap.quickinfo": "Condition is used for statistics",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PricingScaleType": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicator that controls the validity of the scale value or percentage:\n\nFrom a certain quantity or value (base scale)Up to a certain quantity or value (to-scale)Alternatively, it is possible to work with interval scales. Interval scales must be stored in the condition type, that is, the scale type &quot;interval scale&quot; cannot be changed in the condition record. The reason for this is technical restrictions resulting from the programming within pricing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scale Type",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionOrigin": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates where the condition originated (for example, whether you entered the condition manually or whether the system determined it automatically).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Origin",
+          "@sap.quickinfo": "Origin of the Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "IsGroupCondition": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether the system calculates the scale base value or the condition value taking all related items of the business document into account.\n\nFor a group condition to be effective, the items must belong to a group. You can freely define the group to meet the needs of your own organization. The items can, for example, all belong to the same material group.A sales order contains two items. Both items belong to the material group 01.Material Quantity Material groupA 150 01B 100 01The group condition indicator is set in the definition of the condition type for material group discounts. The condition record for material group 01 includes the following pricing scale:Scale quantity Discountfrom 1 pc -1%from 200 pc -2%Neither item alone qualifies for the 2% discount. However, when the items are combined as part of a group condition, the combined quantity creates a basis of 250 pieces. This basis then exceeds the scale value of 200 pieces, which is necessary to qualify for the higher discount.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Group Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionRecord": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Number that uniquely identifies a condition record.\n\nThe system uses the condition record number to store and retrieve information during processing (pricing, for example).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Record No.",
+          "@sap.quickinfo": "Number of the Condition Record",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionSequentialNumber": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "The sequential number that uniquely identifies the condition if a condition supplement exists.\n\nIf you have assigned a condition supplement to the condition, the system automatically assigns the number.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sequent.No. of Cond.",
+          "@sap.quickinfo": "Sequential Number of the Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "TaxCode": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The tax code represents a tax category which must be taken into consideration when making a tax return to the tax authorities.\n\nTax codes are unique per country. The tax rate calculation rules and further features are stored in a table for each tax code.For tax-exempt or non-taxable transactions, you should use tax codes with a 0 percentage rate if the corresponding transactions are to be displayed in the tax returns.You must define new tax codes if tax rates are changed by the state. The old codes with the old tax rates must remain in the system until no more open items which use this tax code exist.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Code",
+          "@sap.quickinfo": "Tax on Sales/Purchases Code",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "WithholdingTaxCode": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "One or more &quot;withholding tax codes&quot; are assigned to each withholding tax type. One of the things these codes determine is the various percentage rates for the withholding tax type.\n\nNote that when processing a business transaction, no more than one withholding tax code can be assigned per withholding tax type. If the business transaction is subject to more than one withholding taxes, these must be represented in the system by defining various withholding tax types.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "W/Tax Code",
+          "@sap.quickinfo": "Withholding Tax Code",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "CndnRoundingOffDiffAmount": {
+          "type": "cds.Decimal",
+          "precision": 6,
+          "scale": 3,
+          "@sap.unit": "TransactionCurrency",
+          "@sap.label": "Cond.Rounding Diff.",
+          "@sap.quickinfo": "Rounding-Off Difference of the Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionAmount": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "The value, resulting from pricing, for a particular condition, total, or subtotal in a document.\n\nThis value is used as a total for the condition in the pricing procedure.",
+          "@sap.unit": "TransactionCurrency",
+          "@sap.label": "Value",
+          "@sap.quickinfo": "Condition Value",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "TransactionCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "The currency that applies to the document (for example, to a sales order or an invoice).\n\nThe system proposes the document currency from the customer master record of the sold-to party. You can change the currency manually in the document. If you change the currency, the system recalculates prices for the entire document.",
+          "@sap.label": "Document Currency",
+          "@sap.quickinfo": "SD Document Currency",
+          "@sap.semantics": "currency-code"
+        },
+        "ConditionControl": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether the prices or values in a condition are fixed or whether and in what way they changed.\n\nThe indicator shows, for example, if the prices generated by a condition have been changed manually during processing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionInactiveReason": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates if the condition is active.\n\nA condition can be inactive due to the following reasons:Condition is excludedSubsequent price deactivates conditionFormula deactivates conditionError during pricing",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Inactive Condition",
+          "@sap.quickinfo": "Condition is Inactive",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionClass": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Preliminary structuring of condition types, for example, in surcharges and discounts or prices.\n\nAllows standardized processing of individual condition classes within the system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Class",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PrcgProcedureCounterForHeader": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Counter",
+          "@sap.quickinfo": "Condition Counter (Header)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "FactorForConditionBasisValue": {
+          "type": "cds.Double",
+          "@sap.label": "Condition Factor",
+          "@sap.quickinfo": "Factor for Condition Base Value",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "StructureCondition": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Controls whether the condition type is a duplicated condition or a cumulated condition.\n\nThis control is only helpful when you use bill of materials or configurable materials:' ' - None'A' - Duplication Condition: A duplicated condition is duplicated into all assigned items.'B' - Cumulation Condition: A cumulated condition contains the net value of all assigned items.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Structure Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PeriodFactorForCndnBasisValue": {
+          "type": "cds.Double",
+          "@sap.label": "Condition Factor",
+          "@sap.quickinfo": "Factor for Condition Basis (Period)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PricingScaleBasis": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Determines how the system interprets a pricing scale in a condition. For example, the scale can be based on quantity, weight, or volume.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scale Basis",
+          "@sap.quickinfo": "Scale Basis Indicator",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionScaleBasisValue": {
+          "type": "cds.Decimal",
+          "precision": 24,
+          "scale": 9,
+          "doc": "A value or quantity that the system uses to access a pricing scale to determine a scale level.\n\nThe scale base value can be a condition value or the value of a quantity, weight, and so on that has been entered in the document.You create a price condition based on a simple quantity scale with scale type A: Base scale:Quantity Price per Unit10 12 USD100 11 USD1000 10 USDA sales order item with 150 units qualifies for the condition scale quantity of 100 units and the price per unit of USD 11. In this case, the scale base value that determines the price is 150.",
+          "@sap.label": "Scale Base Val.",
+          "@sap.quickinfo": "Scale Base Value",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionScaleBasisUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure to which the quantity scale refers.",
+          "@sap.label": "Scale Unit of Meas.",
+          "@sap.quickinfo": "Condition Scale Unit of Measure",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "ConditionScaleBasisCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "Specifies a currency for a pricing scale in a condition record.\n\nIf a pricing scale is based on a value instead of a quantity, you can specify a currency for the value. In the standard version of the SAP System, this field is only relevant in condition records for the following discounts:Price groupPrice group/Material pricing groupYou apply a price group discount to customers in a particular foreign country. When you create a condition record for this discount and enter values in the pricing scale, you can also enter the corresponding foreign currency. During pricing, the system then calculates discounts based on scale values in the foreign currency. The discount amount is then converted into the currency you are using in the sales document.After you enter a currency in this field and save the condition record, you cannot change the currency without deleting the record and creating it again.",
+          "@sap.label": "Scale Currency",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "currency-code"
+        },
+        "CndnIsRelevantForIntcoBilling": {
+          "type": "cds.Boolean",
+          "doc": "Indicator that defines a condition as relevant for the intercompany process.\n\nIntercompany conditions are usually statistical in the sales order and the customer invoice and not statistical in the intercompany invoice.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Intercomp.Billing",
+          "@sap.quickinfo": "Condition for Intercompany Billing",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionIsManuallyChanged": {
+          "type": "cds.Boolean",
+          "doc": "If this flag is set, the condition has been manually or automatically changed or created (by entry in the condition screen).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Changed Manually",
+          "@sap.quickinfo": "Condition Changed Manually",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionIsForConfiguration": {
+          "type": "cds.Boolean",
+          "doc": "A condition that is relevant for variant configuration.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "UsedforVariantConfig",
+          "@sap.quickinfo": "Condition Used for Variant Configuration",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "VariantCondition": {
+          "type": "cds.String",
+          "length": 26,
+          "doc": "Freely definable attribute that determines the valid price components of a configurable material.\n\nTo model the price for a variant of a configurable material, you typically use a larger number of variant condition keys.In a business document, the price for a selected variant is realized as surcharges and discounts specific for this variant: The sales price of a bike depends on the material that is used to produce the frame. You define a characteristic FRAME_MATERIAL that can have the values steel, aluminum, and carbon with the following surcharges:Steel: 0.0 USD per pieceAluminum: + 300 USD per pieceCarbon: + 1000 USD per pieceYou define three different variant condition keys FRAME_STEEL, FRAME_ALU, and FRAME_CARBON and maintain the above-mentioned surcharges as condition records. During order creation, you select the variant of the bike with the carbon frame. This will lead to a surcharge of 1000 USD that corresponds to the variant condition key FRAME_CARBON.",
+          "@sap.label": "Variant Key",
+          "@sap.quickinfo": "Variant Condition Key",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderItem": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Sales Order Item",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "SalesOrderItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.text": "SalesOrderItemText",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Sales Order Item",
+          "notNull": true
+        },
+        "HigherLevelItem": {
+          "type": "cds.String",
+          "length": 6,
+          "doc": "The number of the higher-level item to which this item belongs in a hierarchy.\n\nItems can be organized hierarchically. When you assign a sub-item to another item, the other item becomes a higher-level item.Enter the number of a higher-level item.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Higher-Level Item",
+          "@sap.quickinfo": "Higher-Level Item in Bill of Material Structures"
+        },
+        "SalesOrderItemCategory": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "A classification that distinguishes between different types of item (for example, free of charge items and text items) and determines how the system processes the item.\n\nThe system proposes an item category. If alternatives are defined for your system, you can change the item category manually in the sales document.If, for example, you identify an item as a free or charge item, you tell the system, in this case, to ignore normal pricing procedures.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Item Category",
+          "@sap.quickinfo": "Sales Document Item Category"
+        },
+        "SalesOrderItemText": {
+          "type": "cds.String",
+          "length": 40,
+          "doc": "A short description of the item.\n\nShort texts are used throughout sales order processing, shipping, and billing. They also appear on printed order confirmations.The system proposes the short text from the material master record. If you have included a short text in a customer-material info record, it replaces the material master text during sales document processing. You can change the text at the item level in the sales document or during delivery processing.",
+          "@sap.label": "Item Description",
+          "@sap.quickinfo": "Short Text for Sales Order Item"
+        },
+        "PurchaseOrderByCustomer": {
+          "type": "cds.String",
+          "length": 35,
+          "doc": "Number that the customer uses to uniquely identify a purchasing document (e.g. an inquiry or a purchase order).\n\nThe number creates the link between the customer purchase order and the sales document that you create. You can use the number used by the customer during correspondence with the customer to find certain document information. If the number refers to a purchase order, you can also print it on the documents that you send to the customer (e.g. on the delivery note).",
+          "@sap.label": "Customer Reference"
+        },
+        "PurchaseOrderByShipToParty": {
+          "type": "cds.String",
+          "length": 35,
+          "doc": "Number used by the end customer for unique identification of the purchasing document (e.g. inquiry or purchase).\n\nThe number is the link between the end customer's purchase order and the sales documents that you have created. You can use the end customer's number for correspondence with the customer, in particular for finding certain document information. If the number refers to a purchase order, you can also print documents that you wish to send to the end customer, such as the delivery note.",
+          "@sap.label": "Purchase Order No.",
+          "@sap.quickinfo": "Ship-to Party's Purchase Order Number"
+        },
+        "ExternalItemID": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "External Item ID",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "Material": {
+          "type": "cds.String",
+          "length": 40,
+          "doc": "Alphanumeric key uniquely identifying the material.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number"
+        },
+        "MaterialByCustomer": {
+          "type": "cds.String",
+          "length": 35,
+          "doc": "Uniquely identifies the material from the customer's point of view.\n\nIf the customer uses a different identifier than the one you use for the material, you can include this information in a customer-material info record. You can also include in this record specific shipping details, such asMinimum delivery quantityPartial delivery conditionsEnter a value from an existing customer-material info record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Material",
+          "@sap.quickinfo": "Material Number Used by Customer"
+        },
+        "PricingDate": {
+          "type": "cds.Date",
+          "doc": "The date that determines date-related pricing elements, such as conditions and foreign exchange rate.\n\nYou can use the pricing date as a selection criterion when you process billing documents collectively.The system proposes the current date. You can change it manually in the document. If you change the pricing date, the system recalculates pricing for the entire document. If the date is in the past, you receive a warning before you can continue.Determining the ProposalIn the order: You can customize the order type to determine a proposal, such as the current date or the requested delivery date as the pricing date.In the billing document: The billing date is proposed as the pricing date.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Pricing Date",
+          "@sap.quickinfo": "Date for Pricing and Exchange Rate"
+        },
+        "PricingReferenceMaterial": {
+          "type": "cds.String",
+          "length": 40,
+          "doc": "Material master record that the system uses as a reference for pricing purposes.\n\nThe conditions that apply to the pricing reference material also apply to the material in whose material master record the pricing reference material is stored.A pricing reference material must always have its own material master record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Pricing Ref. Matl",
+          "@sap.quickinfo": "Pricing Reference Material"
+        },
+        "RequestedQuantity": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "@sap.unit": "RequestedQuantityUnit",
+          "@sap.label": "Requested Quantity"
+        },
+        "RequestedQuantityUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Requested Qty Unit",
+          "@sap.quickinfo": "Requested Quantity Unit",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "RequestedQuantitySAPUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (SAP code) for the requested quantity.\n\nFor the requested quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.label": "SAP Code Req. Qty",
+          "@sap.quickinfo": "SAP Unit Code for Requested Quantity"
+        },
+        "RequestedQuantityISOUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (ISO code) for the requested quantity.\n\nFor the requested quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ISO Code Req. Qty",
+          "@sap.quickinfo": "ISO Unit Code for Requested Quantity"
+        },
+        "ItemGrossWeight": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "doc": "The total gross weight of the item. The gross weight represents the net weight plus the weight of packaging.\n\nThe system calculates the gross weight based on the order quantity for the item and the gross weight proposed from the material master record.If the item has more than one schedule line, the system uses the total order quantity of all schedule lines to calculate the gross weight. In sales documents where schedule lines are not allowed (contracts, for example), the system calculates the gross weight using the target quantity.You can change the value manually at the item level.",
+          "@sap.unit": "ItemWeightUnit",
+          "@sap.label": "Gross Weight",
+          "@sap.quickinfo": "Gross Weight of the Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ItemNetWeight": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "doc": "The total net weight for the item. The net weight represents the gross weight less the weight of packaging.\n\nThe system calculates the net weight based on the order quantity for the item and the net weight proposed from the material master record. If the item has more than one schedule line, the system uses the total order quantity of all schedule lines to calculate the net weight. In sales documents where schedule lines are not allowed (contracts, for example), the system calculates the net weight using the target quantity.You can change the value manually at the item level.The gross weight of a refrigerator and its packaging (a cardboard box including protective padding) is 350 pounds. The packaging weighs 25 pounds. In this case, the net weight is 325 pounds.",
+          "@sap.unit": "ItemWeightUnit",
+          "@sap.label": "Net Weight",
+          "@sap.quickinfo": "Net Weight of the Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ItemWeightUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit referring to the gross weight or net weight of the material.\n\nIf you specify a weight, you must enter the corresponding unit of weight here.",
+          "@sap.label": "Unit of Weight",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "ItemWeightSAPUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (SAP code) for the item weight.\n\nFor the item weight, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.label": "SAP Code Item Weight",
+          "@sap.quickinfo": "SAP Unit Code for Item Weight"
+        },
+        "ItemWeightISOUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (ISO code) for the item weight.\n\nFor the item weight, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ISO Code Item Weight",
+          "@sap.quickinfo": "ISO Unit Code for Item Weight"
+        },
+        "ItemVolume": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "doc": "The total volume for the item.\n\nThe system calculates the volume based on the order quantity for the item and the volume proposed from the material master record. If the item has more than one schedule line, the system uses the total order quantity of all schedule lines to calculate the volume. In sales documents where schedule lines are not allowed (contracts, for example), the system calculates the volume using the target quantity.You can change the value manually at the item level.",
+          "@sap.unit": "ItemVolumeUnit",
+          "@sap.label": "Volume",
+          "@sap.quickinfo": "Volume of the item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ItemVolumeUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit referring to the volume of the material.\n\nIf you specify a volume, you have to enter the corresponding volume unit here.",
+          "@sap.label": "Volume Unit",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "ItemVolumeSAPUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (SAP code) for the item volume.\n\nFor the item volume, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.label": "SAP Code f Item Vol.",
+          "@sap.quickinfo": "SAP Unit Code for Item Volume"
+        },
+        "ItemVolumeISOUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (ISO code) for the item volume.\n\nFor the item volume, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ISO Unit Item Volume",
+          "@sap.quickinfo": "ISO Unit Code for Item Volume"
+        },
+        "TransactionCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "The currency that applies to the document (for example, to a sales order or an invoice).\n\nThe system proposes the document currency from the customer master record of the sold-to party. You can change the currency manually in the document. If you change the currency, the system recalculates prices for the entire document.",
+          "@sap.label": "Document Currency",
+          "@sap.quickinfo": "SD Document Currency",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "currency-code"
+        },
+        "NetAmount": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "The net value of the item, after any discounts and surcharges are taken into account. Sales taxes are not included. The value is expressed in the document currency.",
+          "@sap.unit": "TransactionCurrency",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Order Item in Document Currency",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "MaterialGroup": {
+          "type": "cds.String",
+          "length": 9,
+          "doc": "Key that you use to group together several materials or services with the same attributes, and to assign them to a particular material group.\n\nYou can use material groups to:Restrict the scope of analysesSearch specifically for material master records via search helps",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Group"
+        },
+        "MaterialPricingGroup": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "A way of grouping materials to which you want to apply the same condition.\n\nYou can create condition records for a material price group using the following condition types:Material price group (for example, all non-food products)A combination of customer and material price groupA combination of customer price group and material price group (for example, all wholesale customers and all non-food products)",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Price Grp",
+          "@sap.quickinfo": "Material Price Group"
+        },
+        "Batch": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Assigns a material that is manufactured in batches or production lots to a specific batch.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Batch",
+          "@sap.quickinfo": "Batch Number"
+        },
+        "ProductionPlant": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "Key that uniquely identifies a plant.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.quickinfo": "Plant (Own or External)"
+        },
+        "StorageLocation": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "Number of the storage location in which the material is stored. A plant may contain one or more storage locations.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location"
+        },
+        "DeliveryGroup": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "A combination of items that should be delivered together.\n\nThe system uses delivery groups to check the availability of items that should be delivered together. The delivery date of the latest schedule line in the delivery group is taken as the general date for the whole group.During sales order processing, you can enter a number (up to three digits) that identifies a delivery group. The number is freely definable.If necessary, the system adjusts requirements that have already been created and changes the material availability dates for individual items to the delivery date that it has determined for the group.If a typewriter is usually delivered with a case, you can define the two items as a delivery group.If an item has more than one schedule line with a confirmed quantity, then the system deletes all undelivered schedule lines up to the last one. The system automatically carries over the quantities from the deleted schedule lines into the last one. If necessary, the system changes the delivery date of the last schedule line to that of the delivery group.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Delivery Group",
+          "@sap.quickinfo": "Delivery Group (Items are delivered together)"
+        },
+        "ShippingPoint": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The physical location (for example, a warehouse or collection of loading ramps) from which you ship the item.\n\nYou can predefine shipping/receiving points in the system, based on different combinations ofPlantsShipping conditionsLoading groupsDuring delivery processing, the shipping/receiving point is the most important criterion that you use to select deliveries.A delivery can be shipped from only one shipping point or received at only one receiving point.If you want to provide more detailed information about a shipping point you can specify a loading point (for example, one of a number of different loading ramps).If, for example, you want to ship refrigerated goods to a certain customer by rail, the system proposes a shipping point with a suitable location and equipment for loading refrigerated goods onto rail cars.The system can propose a shipping/receiving point. If valid alternatives are predefined in your system, you can change the shipping/receiving point manually.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Shipping Point",
+          "@sap.quickinfo": "Shipping Point / Receiving Point"
+        },
+        "ShippingType": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Shipping type (for example, by road or rail) that has been selected for the transportation of the goods for the shipment legs.\n\nDuring automatic shipment leg determination, all legs created or only the main, direct, or return legs are assigned to this shipping type, depending on the type of leg determination.You can enter the shipment type for the main, direct or return legs in the shipping header. The value is proposed depending on the requirement in the shipment type.By setting the status &quot;planned&quot;, you have the shipping type copied from the respective deliveries into the shipment header, provided:The shipping type is identical in all the deliveries.The shipping type in the shipment header is not already filled.See also: Leg determination",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Shipping Type"
+        },
+        "DeliveryPriority": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The delivery priority assigned to an item.\n\nYou can assign delivery priority to either a particular material or to a combination of customer and material. When you process deliveries collectively, you can use delivery priority as one of the selection criteria.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Delivery Priority"
+        },
+        "DeliveryDateTypeRule": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates when the ordered goods should be delivered.\n\nYou can choose one of the following options:The goods should be delivered on the requested delivery date or later. Note that there is no guarantee that the goods will not be delivered earlier.The goods must be delivered exactly on the confirmed delivery date.The goods must be delivered by the confirmed delivery date (that is, on the date or earlier).You can set the delivery date rule on header level to set a default for any items that you create afterwards.In Transportation Management (TM), this field has the following implications:If you want the goods to be delivered on the requested delivery date or later, the delivery date/time is used as the earliest requested delivery date/time of the freight unit which contains the sales order item.If you want the goods to be delivered on the confirmed delivery date, the start of the delivery date is used as the earliest acceptable delivery date/time and the end of the delivery date as the latest acceptable delivery date/time of the freight unit which contains the sales order item.If you want the goods to be delivered by the confirmed delivery date, the end of the delivery date is used as the latest acceptable delivery date/time of the freight unit which contains the sales order item.Note: If you want to the goods to be delivered on or by the confirmed delivery date, the system ignores the rule for pick-up and delivery window and the condition for pick-up and delivery window determination which you have defined in the freight unit type for the delivery stop.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Deliv Date Rule",
+          "@sap.quickinfo": "Delivery Date Rule"
+        },
+        "IncotermsClassification": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Commonly used trading terms that comply with the standards established by the International Chamber of Commerce (ICC).\n\nIncoterms specify internationally recognized procedures that the shipper and the receiving party must follow for the shipping transaction to be completed successfully.If goods are shipped through a port of departure, the appropriate Incoterm might be: FOB (&quot;Free On Board&quot;). You can provide further details (for example, the name of the port) in the secondary Incoterm field: FOB Boston, for example.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Incoterms",
+          "@sap.quickinfo": "Incoterms (Part 1)"
+        },
+        "IncotermsTransferLocation": {
+          "type": "cds.String",
+          "length": 28,
+          "doc": "Additional information for the primary Incoterm.\n\nIf the primary Incoterm is, for example, FOB (&quot;Free on Board&quot;), then the second field provides details of the port from which the delivery leaves (for example, &quot;FOB Boston&quot;).",
+          "@sap.label": "Incoterms (Part 2)"
+        },
+        "IncotermsLocation1": {
+          "type": "cds.String",
+          "length": 70,
+          "doc": "Provides additional information for the primary Incoterm. For Incoterms 2010, this field represents:\n\n1. For sea and inland waterway transport - Port of Shipment2. For any mode of transport - Place of Delivery 2010Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description Location 1 EXW Ex Works Place of DeliveryFCA Free Carrier Place of DeliveryCPT Carriage Paid To Place of DestinationCIP Carriage & Insurance Paid To Place of DestinationDAF Delivered at Frontier Place of DeliveryDDP Delivered Duty Paid Place of DestinationDDU Delivered Duty Unpaid Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 1 FAS Free Alongside Ship Port of ShipmentFOB Free On Board Port of ShipmentCFR Cost & Freight Port of DestinationCIF Cost Insurance & Freight Port of DestinationDEQ Delivered Eq Quay (Duty Paid) Port of DestinationDES Delivered Ex Ship Port of DestinationIf the primary incoterm is specified as FOB “Free on Board”, the second field provides details of the port from which the delivery leaves, such as FOB Boston.",
+          "@sap.label": "Incoterms Location 1"
+        },
+        "IncotermsLocation2": {
+          "type": "cds.String",
+          "length": 70,
+          "doc": "Provides additional information for the Incoterms. This field is only available for C-Clauses (if customized appropriately). Note the following for the incoterms versions below:\n\nNo Version:This field is disabledIncoterm Version 2000This field is disabled as part of standard delivery unless a customer decides to enable it by the way of Customizing for Sales and Distribution under Master Data -> Business Partners -> Customers -> Billing Document -> Incoterms -> Map Incoterms to Versions.Incoterm Version 2010For this version, the field represents:Sea and inland waterway transport - Port of DestinationAny mode of transport - Place of Destination2010 Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description Location 2CPT Carriage Paid To Place of DestinationCIP Carriage & Insurance Paid To Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 2CFR Cost & Freight Port of DestinationCIF Cost Insurance & Freight Port of Destination",
+          "@sap.label": "Incoterms Location 2"
+        },
+        "ProductTaxClassification1": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification2": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification3": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification4": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification5": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification6": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification7": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification8": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "ProductTaxClassification9": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Classifc. Mat.",
+          "@sap.quickinfo": "Tax Classification for Material"
+        },
+        "MatlAccountAssignmentGroup": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Group of materials with the same accounting requirements.\n\nUsed by the system when creating an accounting document from a billing document to determine the revenue or sales deduction account.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Acct Assmt Grp Mat.",
+          "@sap.quickinfo": "Account Assignment Group for Material"
+        },
+        "CustomerPaymentTerms": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "Key for defining payment terms composed of cash discount percentages and payment periods.\n\nIt is used in sales orders, purchase orders, and invoices. Terms of payment provide information for:Cash managementDunning proceduresPayment transactionsData can be entered in the field for the terms of payment key in various ways as you enter a business transaction:In most business transactions, the system defaults the key specified in the master record of the customer/vendor in question.In some transactions (for example, credit memos), however, the system does not default the key from the master record. Despite this, you can use the key from the customer/vendor master record by entering &quot;*&quot; in the field.Regardless of whether or not a key is defaulted from the master record, you can manually enter a key during document entry at:item level in sales ordersheader level in purchase orders and invoicesMaster records have separate areas for Financial Accounting, Sales, and Purchasing. You can specify different terms of payment keys in each of these areas. When you then enter a business transaction, the application in question will use the key specified in its area of the master record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Terms of Payment",
+          "@sap.quickinfo": "Terms of Payment Key"
+        },
+        "FixedValueDate": {
+          "type": "cds.Date",
+          "doc": "The date on which the terms of payment related to the sales document become effective.\n\nIf you enter a date in this field, you cannot enter a value in the additional value days field.",
+          "@sap.display.format": "Date",
+          "@sap.label": "Fixed Value Date"
+        },
+        "CustomerGroup": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Identifies a particular group of customers (for example, wholesale or retail) for the purpose of pricing or generating statistics.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer Group"
+        },
+        "SalesDocumentRjcnReason": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The reason for rejecting a sales document (for example, a sales quotation or a sales order).\n\nThe rejection can come from your organization (for example, you can reject a customer request for a credit memo because it is unreasonable) or from the customer (for example, the customer rejects a quotation because the price is too high). The following list shows the effects on different document types after you enter a reason for rejection:Inquiries and quotations: no further references by other documentsSales orders: no further delivery of itemsContracts: no further creation of release ordersCredit and debit memo requests: no further processing of credit or debit memosEnter one of the values predefined for your system.If you enter a reason for rejection, the system automatically cancels any MRP requirements previously generated for the items.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reason for Rejection",
+          "@sap.quickinfo": "Reason for Rejection of Sales Documents"
+        },
+        "ItemBillingBlockReason": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Indicates if the item is blocked for billing.\n\nTo block an item for billing, enter one of the values predefined for your system.You can block an item for billing so that, for example, terms of payment or prices can be checked before further processing takes place.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Billing Block",
+          "@sap.quickinfo": "Billing Block for Item"
+        },
+        "SlsDocIsRlvtForProofOfDeliv": {
+          "type": "cds.Boolean",
+          "doc": "This indicator controls proof of delivery (POD) processing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Relevant for POD",
+          "@sap.quickinfo": "Relevant for POD processing"
+        },
+        "WBSElement": {
+          "type": "cds.String",
+          "length": 24,
+          "doc": "Key that identifies a WBS element.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "WBS Element",
+          "@sap.quickinfo": "Work Breakdown Structure Element (WBS Element)"
+        },
+        "ProfitCenter": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Key which together with the controlling area uniquely identifies a profit center.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Profit Center"
+        },
+        "AccountingExchangeRate": {
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 5,
+          "doc": "The exchange rate that the system applies when you create an invoice.\n\nYour system is configured in such a way that it expects:No prefix (leading sign) for direct ratesA &quot;&quot; as prefix (leading sign) for direct ratesNo prefix for indirect ratesA &quot;&quot; as prefix for indirect rates",
+          "@sap.label": "Exchng. Rate Accntg.",
+          "@sap.quickinfo": "Exchange rate for FI postings"
+        },
+        "ReferenceSDDocument": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Identifies the sales order to which the delivery refers.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reference Document",
+          "@sap.quickinfo": "Document Number of the Reference Document"
+        },
+        "ReferenceSDDocumentItem": {
+          "type": "cds.String",
+          "length": 6,
+          "doc": "The number of the sales order item to which the delivery item refers.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reference Item",
+          "@sap.quickinfo": "Item Number of the Reference Item"
+        },
+        "SDProcessStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Displays the overall processing status of the item.\n\nThe system determines the overall status from all statuses (for example, delivery and billing) for this item. The status message tells you whether processing of the item is open, in progress, or complete.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Overall Status",
+          "@sap.quickinfo": "Overall Processing Status (Item)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "DeliveryStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Displays the delivery status of the item.\n\nThe status line tells you if the item is not yet delivered, is partly delivered, is completely delivered, or is not relevant for delivery.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Delivery Status",
+          "@sap.quickinfo": "Delivery Status (Item)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "OrderRelatedBillingStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "The order-related billing status shows to what extent an item has been processed for billing.\n\nYou determine whether an item is billed as an order-related or delivery-related item when you define item category defaults through the Customizing menus.Credit and debit memo items, for example, are billed as order-related items.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Ord. Rel. Billg Sts",
+          "@sap.quickinfo": "Order-Related Billing Status (Item)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "to_Partner": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItemPartner",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_PricingElement": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItemPrElement",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        },
+        "to_ScheduleLine": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderScheduleLine",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "to_Text": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItemText",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderItemPartner": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Item Partner",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "SalesOrderItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Sales Order Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "PartnerFunction": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The abbreviated form of the name that identifies the partner function.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Partner Function",
+          "notNull": true
+        },
+        "Customer": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer",
+          "@sap.quickinfo": "Customer Number"
+        },
+        "Supplier": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Account Number of Supplier"
+        },
+        "Personnel": {
+          "type": "cds.String",
+          "length": 8,
+          "doc": "The personnel number is the only feature within a client which is unique to an employee. You have to enter a personnel number before you can display and maintain an employee's master data and time data.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Personnel Number"
+        },
+        "ContactPerson": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "The number that uniquely identifies the contact person.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Contact Person",
+          "@sap.quickinfo": "Number of contact person"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        },
+        "to_SalesOrderItem": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItem",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderItemPrElement": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Item Pricing Element",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "SalesOrderItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Sales Order Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "PricingProcedureStep": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Number that determines the sequence of the condition within a procedure.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Step Number",
+          "notNull": true
+        },
+        "PricingProcedureCounter": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Access number of the conditions within a step in the pricing procedure.\n\nDuring automatic pricing, the system takes into account the sequence specified by the counter.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Counter",
+          "@sap.quickinfo": "Condition Counter",
+          "notNull": true
+        },
+        "ConditionType": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The key that uniquely identifies the condition.\n\nThe condition type indicates, for example, whether, during pricing, the system applies a price, a discount, a surcharge, or other pricing elements, such as freight costs and sales taxes. For each of these pricing elements, there is a condition type defined in the system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Type"
+        },
+        "PricingDateTime": {
+          "type": "cds.String",
+          "length": 14,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Valid From",
+          "@sap.quickinfo": "Timestamp for Pricing",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionCalculationType": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Determines how the system calculates prices, discounts, or surcharges in a condition. For example, the system can calculate a price as a fixed amount or as a percentage based on quantity, volume, or weight.\n\nThe calculation type can be set when generating new condition records. If this does not happen, the calculation type maintained here is valid for the condition record.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Calculation Type",
+          "@sap.quickinfo": "Calculation Type for Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionBaseValue": {
+          "type": "cds.Decimal",
+          "precision": 24,
+          "scale": 9,
+          "doc": "Defines the value in a business document that the system uses together with the condition amount to calculate the condition value for the price condition.\n\nDuring the pricing process in a business document, for each condition type used in the pricing procedure, the system calculates the condition value as follows:For several calculation types (for example, A, C, D, E, F, H, I, J, K, M, N, O, P, W), the system multiplies the condition amount with the condition basis to calculate the condition value.For several calculation types (for example, A, C, D, E, F, H, I, M, N, O, P), the system multiplies the condition amount with the condition basis to calculate the condition value.For several calculation types (for example, C, D, E, F, H, I, M, N, O, P), the value of the condition basis refers to a unit of measure. If the unit of measure of the conditions basis differs from the unit of measure of the price condition (condition unit), the system automatically converts it into the unit of measure of the condition unit. For calculation types C, M, N, O, and P, the item quantity is the default value for the condition basis.For several calculation types (for example, A, B, H, I, J, K, W), the condition basis is a currency field and refers to a currency key field. Such a currency field in the context of pricing is called currency amount. If the currency key of the conditions basis (currency amount) differs from the currency key of the document, the system automatically converts the condition basis (currency amount) into the currency of the document. The system uses the exchange rates for the currencies that are defined in the general settings for currencies.For several calculation types (for example, A, B, H, I), the condition basis is a currency field and refers to a currency key field. Such a currency field in the context of pricing is called currency amount. If the currency key of the conditions basis (currency amount) differs from the currency key of the document, the system automatically converts the condition basis (currency amount) into the currency of the document. The system uses the exchange rates for the currencies that are defined in the general settings for currencies.Note: The standard number of decimal places for a currency is two.Currencies that use a different number of decimal places must in addition be entered into table TCURX, where you can explicitly define the number of decimal places, for example, zero decimals for Japanese yen JPY.Deviations are preconfigured depending on the currency, for example, zero decimals for Japanese yen JPY.If you have defined scales, the system uses the condition basis to determine the valid scale line with the corresponding condition amount.In usage-based pricing models, the usage corresponds to the condition basis.The condition basis can be aQuantityWeightVolumeCurrency AmountA sales order includes an item with a quantity of 120 pieces:The determined list price of USD 101 (condition amount) multiplied with the quantity of 120 pieces (condition basis) results in a condition value of USD 12120.Two discounts are applied to the item of this sales order:The first discount (-1 USD / PC) is based on the quantity ordered that is the condition basis equals the item quantity and the result is - 120 USD.The second discount (- 2 %) is calculated as a percentage which is applied to the results of the list price (USD 12120) and the first discount (- 120 USD). Its result (12000 USD) is the condition basis for the second discount. The result of the second discount is - 240 USD.",
+          "@sap.label": "Condition Basis",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionRateValue": {
+          "type": "cds.Decimal",
+          "precision": 24,
+          "scale": 9,
+          "doc": "Determines how the system calculates prices using a specific condition.\n\nDepending on the condition type, it can be a fixed amount, a percentage, or per mille. If the condition includes a pricing scale, the condition amount or percentage displays the first line of the scale.The following examples illustrate how you can use the condition amount or percentage in different condition types:If you create a condition that includes prices (for example, prices for a material), you enter an amount.If you create a condition based on percentage, such as discounts or surcharges (for example, a customer-specific discount), you enter the value of a percentage. If the condition is a discount, the system automatically enters a minus sign behind the amount and a percent sign in the Condition Unit field.",
+          "@sap.label": "Amount",
+          "@sap.quickinfo": "Condition Amount or Percentage"
+        },
+        "ConditionCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "Currency key for amounts in the system.",
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code"
+        },
+        "ConditionQuantity": {
+          "type": "cds.Decimal",
+          "precision": 5,
+          "scale": 0,
+          "doc": "The quantity on which the amount or percentage is based. The quantity is expressed in sales units (for example, bottles).\n\nYou want to create a condition record for a material price of US$8 for 1 piece. You enter &quot;8&quot; in the Rate field, &quot;USD&quot; in the Unit field, and &quot;1&quot; as the condition pricing unit in this field.You create a condition record that gives a fixed discount of $10 to a customer who buys 1000 bottles. In this case, the condition pricing unit is 1000.",
+          "@sap.unit": "ConditionQuantityUnit",
+          "@sap.label": "Pricing Unit",
+          "@sap.quickinfo": "Condition Pricing Unit"
+        },
+        "ConditionQuantityUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Quantity unit, to which the condition amount or percentage refers.",
+          "@sap.label": "Condition Unit",
+          "@sap.quickinfo": "Condition Unit in the Document",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "ConditionQuantitySAPUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (SAP unit code) for the condition quantity.\n\nFor the condition quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.label": "SAP Condition Qty",
+          "@sap.quickinfo": "SAP Unit Code for Condition Quantity"
+        },
+        "ConditionQuantityISOUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (ISO code) for the condition quantity.\n\nFor the condition quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ISO Condition Qty",
+          "@sap.quickinfo": "ISO Unit Code for Condition Quantity"
+        },
+        "ConditionCategory": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "A classification of conditions according to pre-defined categories (for example, all conditions that relate to freight costs).",
+          "@sap.label": "Condition Category",
+          "@sap.quickinfo": "Condition Category (Examples: Tax, Freight, Price, Cost)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionIsForStatistics": {
+          "type": "cds.Boolean",
+          "doc": "This indicator causes a surcharge or discount to be set in the document statistically (that is, without altering the value).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Statistical",
+          "@sap.quickinfo": "Condition is used for statistics",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PricingScaleType": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicator that controls the validity of the scale value or percentage:\n\nFrom a certain quantity or value (base scale)Up to a certain quantity or value (to-scale)Alternatively, it is possible to work with interval scales. Interval scales must be stored in the condition type, that is, the scale type &quot;interval scale&quot; cannot be changed in the condition record. The reason for this is technical restrictions resulting from the programming within pricing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scale Type",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "IsRelevantForAccrual": {
+          "type": "cds.Boolean",
+          "doc": "Indicates that the system posts the amounts resulting from this condition to financial accounting as accruals.\n\nIf you mark this indicator, the condition appears in the document as a statistical condition.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Accruals",
+          "@sap.quickinfo": "Condition is Relevant for Accrual (e.g. Freight)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "CndnIsRelevantForInvoiceList": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates that the condition type is relevant for internal costing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Invoice List Cond.",
+          "@sap.quickinfo": "Condition for Invoice List",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionOrigin": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates where the condition originated (for example, whether you entered the condition manually or whether the system determined it automatically).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Origin",
+          "@sap.quickinfo": "Origin of the Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "IsGroupCondition": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether the system calculates the scale base value or the condition value taking all related items of the business document into account.\n\nFor a group condition to be effective, the items must belong to a group. You can freely define the group to meet the needs of your own organization. The items can, for example, all belong to the same material group.A sales order contains two items. Both items belong to the material group 01.Material Quantity Material groupA 150 01B 100 01The group condition indicator is set in the definition of the condition type for material group discounts. The condition record for material group 01 includes the following pricing scale:Scale quantity Discountfrom 1 pc -1%from 200 pc -2%Neither item alone qualifies for the 2% discount. However, when the items are combined as part of a group condition, the combined quantity creates a basis of 250 pieces. This basis then exceeds the scale value of 200 pieces, which is necessary to qualify for the higher discount.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Group Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionRecord": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Number that uniquely identifies a condition record.\n\nThe system uses the condition record number to store and retrieve information during processing (pricing, for example).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Record No.",
+          "@sap.quickinfo": "Number of the Condition Record",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionSequentialNumber": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "The sequential number that uniquely identifies the condition if a condition supplement exists.\n\nIf you have assigned a condition supplement to the condition, the system automatically assigns the number.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sequent.No. of Cond.",
+          "@sap.quickinfo": "Sequential Number of the Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "TaxCode": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The tax code represents a tax category which must be taken into consideration when making a tax return to the tax authorities.\n\nTax codes are unique per country. The tax rate calculation rules and further features are stored in a table for each tax code.For tax-exempt or non-taxable transactions, you should use tax codes with a 0 percentage rate if the corresponding transactions are to be displayed in the tax returns.You must define new tax codes if tax rates are changed by the state. The old codes with the old tax rates must remain in the system until no more open items which use this tax code exist.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Code",
+          "@sap.quickinfo": "Tax on Sales/Purchases Code",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "WithholdingTaxCode": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "One or more &quot;withholding tax codes&quot; are assigned to each withholding tax type. One of the things these codes determine is the various percentage rates for the withholding tax type.\n\nNote that when processing a business transaction, no more than one withholding tax code can be assigned per withholding tax type. If the business transaction is subject to more than one withholding taxes, these must be represented in the system by defining various withholding tax types.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "W/Tax Code",
+          "@sap.quickinfo": "Withholding Tax Code",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "CndnRoundingOffDiffAmount": {
+          "type": "cds.Decimal",
+          "precision": 6,
+          "scale": 3,
+          "@sap.unit": "TransactionCurrency",
+          "@sap.label": "Cond.Rounding Diff.",
+          "@sap.quickinfo": "Rounding-Off Difference of the Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionAmount": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "The value, resulting from pricing, for a particular condition, total, or subtotal in a document.\n\nThis value is used as a total for the condition in the pricing procedure.",
+          "@sap.unit": "TransactionCurrency",
+          "@sap.label": "Value",
+          "@sap.quickinfo": "Condition Value",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "TransactionCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "The currency that applies to the document (for example, to a sales order or an invoice).\n\nThe system proposes the document currency from the customer master record of the sold-to party. You can change the currency manually in the document. If you change the currency, the system recalculates prices for the entire document.",
+          "@sap.label": "Document Currency",
+          "@sap.quickinfo": "SD Document Currency",
+          "@sap.semantics": "currency-code"
+        },
+        "ConditionControl": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether the prices or values in a condition are fixed or whether and in what way they changed.\n\nThe indicator shows, for example, if the prices generated by a condition have been changed manually during processing.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionInactiveReason": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates if the condition is active.\n\nA condition can be inactive due to the following reasons:Condition is excludedSubsequent price deactivates conditionFormula deactivates conditionError during pricing",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Inactive Condition",
+          "@sap.quickinfo": "Condition is Inactive",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionClass": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Preliminary structuring of condition types, for example, in surcharges and discounts or prices.\n\nAllows standardized processing of individual condition classes within the system.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Condition Class",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PrcgProcedureCounterForHeader": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Counter",
+          "@sap.quickinfo": "Condition Counter (Header)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "FactorForConditionBasisValue": {
+          "type": "cds.Double",
+          "@sap.label": "Condition Factor",
+          "@sap.quickinfo": "Factor for Condition Base Value",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "StructureCondition": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Controls whether the condition type is a duplicated condition or a cumulated condition.\n\nThis control is only helpful when you use bill of materials or configurable materials:' ' - None'A' - Duplication Condition: A duplicated condition is duplicated into all assigned items.'B' - Cumulation Condition: A cumulated condition contains the net value of all assigned items.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Structure Condition",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PeriodFactorForCndnBasisValue": {
+          "type": "cds.Double",
+          "@sap.label": "Condition Factor",
+          "@sap.quickinfo": "Factor for Condition Basis (Period)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PricingScaleBasis": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Determines how the system interprets a pricing scale in a condition. For example, the scale can be based on quantity, weight, or volume.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scale Basis",
+          "@sap.quickinfo": "Scale Basis Indicator",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionScaleBasisValue": {
+          "type": "cds.Decimal",
+          "precision": 24,
+          "scale": 9,
+          "doc": "A value or quantity that the system uses to access a pricing scale to determine a scale level.\n\nThe scale base value can be a condition value or the value of a quantity, weight, and so on that has been entered in the document.You create a price condition based on a simple quantity scale with scale type A: Base scale:Quantity Price per Unit10 12 USD100 11 USD1000 10 USDA sales order item with 150 units qualifies for the condition scale quantity of 100 units and the price per unit of USD 11. In this case, the scale base value that determines the price is 150.",
+          "@sap.label": "Scale Base Val.",
+          "@sap.quickinfo": "Scale Base Value",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionScaleBasisUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure to which the quantity scale refers.",
+          "@sap.label": "Scale Unit of Meas.",
+          "@sap.quickinfo": "Condition Scale Unit of Measure",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "ConditionScaleBasisCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "Specifies a currency for a pricing scale in a condition record.\n\nIf a pricing scale is based on a value instead of a quantity, you can specify a currency for the value. In the standard version of the SAP System, this field is only relevant in condition records for the following discounts:Price groupPrice group/Material pricing groupYou apply a price group discount to customers in a particular foreign country. When you create a condition record for this discount and enter values in the pricing scale, you can also enter the corresponding foreign currency. During pricing, the system then calculates discounts based on scale values in the foreign currency. The discount amount is then converted into the currency you are using in the sales document.After you enter a currency in this field and save the condition record, you cannot change the currency without deleting the record and creating it again.",
+          "@sap.label": "Scale Currency",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "currency-code"
+        },
+        "CndnIsRelevantForIntcoBilling": {
+          "type": "cds.Boolean",
+          "doc": "Indicator that defines a condition as relevant for the intercompany process.\n\nIntercompany conditions are usually statistical in the sales order and the customer invoice and not statistical in the intercompany invoice.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Intercomp.Billing",
+          "@sap.quickinfo": "Condition for Intercompany Billing",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionIsManuallyChanged": {
+          "type": "cds.Boolean",
+          "doc": "If this flag is set, the condition has been manually or automatically changed or created (by entry in the condition screen).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Changed Manually",
+          "@sap.quickinfo": "Condition Changed Manually",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ConditionIsForConfiguration": {
+          "type": "cds.Boolean",
+          "doc": "A condition that is relevant for variant configuration.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "UsedforVariantConfig",
+          "@sap.quickinfo": "Condition Used for Variant Configuration",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "VariantCondition": {
+          "type": "cds.String",
+          "length": 26,
+          "doc": "Freely definable attribute that determines the valid price components of a configurable material.\n\nTo model the price for a variant of a configurable material, you typically use a larger number of variant condition keys.In a business document, the price for a selected variant is realized as surcharges and discounts specific for this variant: The sales price of a bike depends on the material that is used to produce the frame. You define a characteristic FRAME_MATERIAL that can have the values steel, aluminum, and carbon with the following surcharges:Steel: 0.0 USD per pieceAluminum: + 300 USD per pieceCarbon: + 1000 USD per pieceYou define three different variant condition keys FRAME_STEEL, FRAME_ALU, and FRAME_CARBON and maintain the above-mentioned surcharges as condition records. During order creation, you select the variant of the bike with the carbon frame. This will lead to a surcharge of 1000 USD that corresponds to the variant condition key FRAME_CARBON.",
+          "@sap.label": "Variant Key",
+          "@sap.quickinfo": "Variant Condition Key",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        },
+        "to_SalesOrderItem": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItem",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderItemText": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Item Text",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "SalesOrderItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Sales Order Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "Language": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The language key indicates\n\n- the language in which texts are displayed,- the language in which you enter texts,- the language in which the system prints texts.",
+          "@sap.label": "Language Key",
+          "notNull": true
+        },
+        "LongTextID": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The text ID defines the various types of texts related to a text object. For example, the object &quot;TEXT&quot; (standard texts) can have the following text IDs:\n\nST for user-specific standard texts (individual texts)SYST for cross-application system textsvarious IDs for specific application departments. You must have the appropriate access authorization in order to access these texts.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Text ID",
+          "notNull": true
+        },
+        "LongText": {
+          "type": "cds.LargeString",
+          "@sap.label": "String",
+          "@sap.heading": "",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        },
+        "to_SalesOrderItem": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrderItem",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderScheduleLine": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Item Schedule Line",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "doc": "The number that uniquely identifies the sales document.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Document",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "SalesOrderItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "doc": "The number that uniquely identifies the item in the sales document.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Document Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "ScheduleLine": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The number that uniquely identifies the schedule line in the sales document.\n\nWhen an item has more than one schedule line, the system automatically assigns a unique number to each line. The number is displayed in the details screens for schedule lines.The schedule line number serves internal purposes and does not, for example, determine the sequence of schedule lines in the overview screen. The schedule lines on the overview screen are sorted by date.",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Schedule Line Number",
+          "notNull": true
+        },
+        "RequestedDeliveryDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Delivery Date",
+          "@sap.quickinfo": "Requested Delivery Date"
+        },
+        "ConfirmedDeliveryDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Delivery Date",
+          "@sap.quickinfo": "Confirmed Delivery Date"
+        },
+        "OrderQuantityUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure in which the material is sold.",
+          "@sap.label": "Sales Unit",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "OrderQuantitySAPUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (SAP code) for the order quantity.\n\nFor the order quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.label": "SAP Order Quantity",
+          "@sap.quickinfo": "SAP Unit Code for Order Quantity"
+        },
+        "OrderQuantityISOUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "doc": "Unit of measure (ISO code) for the order quantity.\n\nFor the order quantity, you can use either the language-dependent unit code, the ISO code, or the SAP code (the format found in the database without conversions).",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ISO Order Quantity",
+          "@sap.quickinfo": "ISO Unit Code for Order Quantity"
+        },
+        "ScheduleLineOrderQuantity": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "doc": "Required order quantity in an individual schedule line.\n\nIf you change the required order quantity in the schedule line, the system re-rounds the quantities, determines the rounded quantity, and re-runs the availability check based on the rounded quantity. The required order quantity remains as the orginal quantity (before rounding) in the schedule line.If the system does not round up the quantity, this means that the required order quantity matches the rounded quantity.",
+          "@sap.unit": "OrderQuantityUnit",
+          "@sap.label": "Order Quantity",
+          "@sap.quickinfo": "Order Quantity in Sales Units"
+        },
+        "ConfdOrderQtyByMatlAvailCheck": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "doc": "The item quantity that the system confirms for shipping after checking inventory availability.\n\nThe confirmed quantity can differ from the order quantity (for example, insufficient stock is available to meet the customer's request). If the availability of inventory changes during delivery processing, the confirmed quantity can also differ from the delivered quantity that the customer actually receives.If you change the order quantity (for example, if you create new schedule lines for the item), the system updates the confirmed quantity (depending on availability).",
+          "@sap.unit": "OrderQuantityUnit",
+          "@sap.label": "Confirmed Quantity"
+        },
+        "DeliveredQtyInOrderQtyUnit": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "OrderQuantityUnit",
+          "@sap.label": "Delivered Quantity"
+        },
+        "OpenConfdDelivQtyInOrdQtyUnit": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "OrderQuantityUnit",
+          "@sap.label": "Open Quantity",
+          "@sap.quickinfo": "Open Confirmed Delivery Quantity"
+        },
+        "CorrectedQtyInOrderQtyUnit": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "doc": "Rounded quantity of the required quantity in the schedule line in the sales order.\n\nThe system rounds the quantity using the rounding profiles from the customer-material info record or the material master record. The profile can be switched on for each customer.If you change the rounded quantity, the system automatically performs an availability check and/or delivery scheduling and updates the confirmed quantity. The rounded quantity is cumulated in the total order quantity of the item. The required order quantity remains as the original quantity (before rounding) in the schedule line.If the system does not round the quantity, the rounded quantity of the required order quantity in the schedule line is valid.",
+          "@sap.unit": "OrderQuantityUnit",
+          "@sap.label": "Corr.qty",
+          "@sap.quickinfo": "Corrected quantity in sales unit"
+        },
+        "DelivBlockReasonForSchedLine": {
+          "type": "cds.String",
+          "length": 2,
+          "doc": "Indicates if a schedule line for the item is blocked for delivery.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Delivery Block",
+          "@sap.quickinfo": "Schedule Line Blocked for Delivery"
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SalesOrderText": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Header Text",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "Language": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "doc": "The language key indicates\n\n- the language in which texts are displayed,- the language in which you enter texts,- the language in which the system prints texts.",
+          "@sap.label": "Language Key",
+          "notNull": true
+        },
+        "LongTextID": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "doc": "The text ID defines the various types of texts related to a text object. For example, the object &quot;TEXT&quot; (standard texts) can have the following text IDs:\n\nST for user-specific standard texts (individual texts)SYST for cross-application system textsvarious IDs for specific application departments. You must have the appropriate access authorization in order to access these texts.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Text ID",
+          "notNull": true
+        },
+        "LongText": {
+          "type": "cds.LargeString",
+          "@sap.label": "String",
+          "@sap.heading": "",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.A_SlsOrdPaymentPlanItemDetails": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Header Payment Plan",
+      "elements": {
+        "SalesOrder": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "PaymentPlanItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Item for billing plan/invoice plan/payment cards",
+          "notNull": true
+        },
+        "PaymentPlan": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bill. Plan. No.",
+          "@sap.quickinfo": "Billing Plan Number / Invoicing Plan Number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ElectronicPaymentType": {
+          "type": "cds.String",
+          "length": 4,
+          "doc": "Specifies the type of electronic payment.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "EPayt Type",
+          "@sap.quickinfo": "Electronic Payment: Payment Type"
+        },
+        "ElectronicPayment": {
+          "type": "cds.String",
+          "length": 25,
+          "doc": "The account number of the electronic payment. Along with the electronic payment type, this number uniquely identifies the payment.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Account Number",
+          "@sap.quickinfo": "Electronic Payment: Account Number"
+        },
+        "EPaytValidityStartDate": {
+          "type": "cds.Date",
+          "doc": "Date as of which the payment account is valid.",
+          "@sap.display.format": "Date",
+          "@sap.label": "EPayt Valid from",
+          "@sap.quickinfo": "Electronic Payment: Valid from"
+        },
+        "EPaytValidityEndDate": {
+          "type": "cds.Date",
+          "doc": "Date up to which the payment account is valid.",
+          "@sap.display.format": "Date",
+          "@sap.label": "EPayt Valid to",
+          "@sap.quickinfo": "Electronic Payment: Valid to"
+        },
+        "ElectronicPaymentHolderName": {
+          "type": "cds.String",
+          "length": 40,
+          "doc": "The name of the person or company on the electronic payment account.",
+          "@sap.label": "Account Holder",
+          "@sap.quickinfo": "Electronic Payment: Name of Account Holder"
+        },
+        "AuthorizedAmountInAuthznCrcy": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "Specifies the amount authorized by the clearing house. It may differ from the requested authorization amount, as in the case of partial authorization.\n\nThe system uses the authorized amount to determine whether to block the sales order or delivery.",
+          "@sap.unit": "AuthorizationCurrency",
+          "@sap.label": "Authorized Amount",
+          "@sap.quickinfo": "Electronic Payment: Authorized Amount"
+        },
+        "AuthorizationCurrency": {
+          "type": "cds.String",
+          "length": 5,
+          "doc": "Currency key for amounts in the system.",
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.semantics": "currency-code"
+        },
+        "AuthorizationByDigitalPaytSrvc": {
+          "type": "cds.String",
+          "length": 10,
+          "doc": "Number assigned to a successful authorization by the clearing house.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Auth. Number",
+          "@sap.quickinfo": "Electronic Payment: Authorization Number"
+        },
+        "AuthorizationByAcquirer": {
+          "type": "cds.String",
+          "length": 15,
+          "doc": "Reference code assigned to an authorization by the clearing house to aid in tracking the transaction to which the authorization belongs.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Auth. Ref. Code",
+          "@sap.quickinfo": "Electronic Payment: Authorization Reference Code",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "AuthorizationDate": {
+          "type": "cds.Date",
+          "doc": "Date on which the SAP system requested the authorization.",
+          "@sap.display.format": "Date",
+          "@sap.label": "EPayt Auth. Date",
+          "@sap.quickinfo": "Electronic Payment: Authorization Date",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "AuthorizationTime": {
+          "type": "cds.Time",
+          "doc": "Time at which the SAP system requested the authorization.",
+          "@sap.label": "EPayt Auth. Time",
+          "@sap.quickinfo": "Electronic Payment: Authorization Time",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "AuthorizationStatusName": {
+          "type": "cds.String",
+          "length": 40,
+          "doc": "Contains the text describing the various responses that you receive from the clearing house in the authorization and settlement processes.\n\nThe clearing house checks the information they receive from you on the payment card and cardholder, and return responses that refer to errors and problems which occur during these checks.Create a text in the SAP System that matches the clearing house response.",
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Payment cards: Result text",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "EPaytByDigitalPaymentSrvc": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "EPayt Token",
+          "@sap.quickinfo": "Token for Digital Payment Integration in SD"
+        },
+        "ElectronicPaymentCallStatus": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates whether you successfully reached the clearing house's computer system for authorization, and whether you received an answer.\n\nThere are four types of responses:Not relevantExternal system not reachedExternal system reached: no responseExternal system reached: response received",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Call Status",
+          "@sap.quickinfo": "Electronic Payment: Call Status",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "EPaytAuthorizationResult": {
+          "type": "cds.String",
+          "length": 1,
+          "doc": "Indicates the status of the authorization for this payment based on the authorization response sent back by the clearing house.\n\nThe SAP System recognizes only three responses:Checks successfulUnsuccessful: authorize laterUnsuccessful: block authorization",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Rsp to Auth. Check",
+          "@sap.quickinfo": "Electronic Payment: Response to Authorization Checks",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "EPaytToBeAuthorizedAmount": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "The sum of all the authorization amounts in the payment plan. This is the amount sent to the clearing house for authorization.",
+          "@sap.unit": "AuthorizationCurrency",
+          "@sap.label": "Amt to Be Auth.",
+          "@sap.quickinfo": "Electronic Payment: Amount to Be Authorized",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "EPaytAuthorizationIsExpired": {
+          "type": "cds.Boolean",
+          "doc": "Indicates whether the authorization has expired.\n\nNote that the system determines whether an authorization has expired based on the validity period. This validity period is valid for all authorizations in the SAP System.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Auth. Expired",
+          "@sap.quickinfo": "Electronic Payment: Authorization Expired",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "EPaytAmountIsChanged": {
+          "type": "cds.Boolean",
+          "doc": "Indicates whether the authorization amount has been changed manually.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Amount Changed",
+          "@sap.quickinfo": "Electronic Payment: Amount Changed",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PreauthorizationIsRequested": {
+          "type": "cds.Boolean",
+          "doc": "Indicates whether a transaction has been preauthorized.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Preauthorization",
+          "@sap.quickinfo": "Electronic Payment: Preauthorization",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PaymentServiceProvider": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Paymnt Serv. Provid.",
+          "@sap.quickinfo": "Payment Service Provider for Digital Payments"
+        },
+        "PaymentByPaymentServicePrvdr": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Payment Identifier",
+          "@sap.quickinfo": "Digital Payments: Payment ID from Payment Service Provider"
+        },
+        "TransactionByPaytSrvcPrvdr": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "PSP Transaction ID",
+          "@sap.quickinfo": "SAP Digital Payments: Transaction ID of PSP"
+        },
+        "MerchantByClearingHouse": {
+          "type": "cds.String",
+          "length": 15,
+          "doc": "The unique number issued by the clearing house to identify a merchant for settling payment.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Merchant ID",
+          "@sap.quickinfo": "Electronic Payment: Merchant ID at Clearing House"
+        },
+        "PaymentCardAuthznRelationID": {
+          "type": "cds.String",
+          "length": 44,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Auth. Rel. ID",
+          "@sap.quickinfo": "Unique identifier of a previous successful authorization"
+        },
+        "MaximumToBeAuthorizedAmount": {
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3,
+          "doc": "Specifies the value to be billed which the system determines for the billing date on the basis of the billing rule assigned to it.\n\nIn the case of a contract, this is a total amount. For a project, this is a partial amount of the overall billing value which is determined on the basis of a percentage.",
+          "@sap.unit": "AuthorizationCurrency",
+          "@sap.label": "Billing Value",
+          "@sap.quickinfo": "Value to be billed/calc. on date in billing/invoice plan"
+        },
+        "PaytPlnForAuthorizationItem": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Higher-level plan",
+          "@sap.quickinfo": "Higher-level payment card plan number for billing",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PaytPlnItmForAuthorizationItem": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Higher-level item",
+          "@sap.quickinfo": "Higher-level item in billing plan",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "to_SalesOrder": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_SALES_ORDER_SRV.A_SalesOrder",
+          "keys": []
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.FunctionResult": {
+      "kind": "type",
+      "@cds.external": true,
+      "elements": {
+        "Boolean": {
+          "type": "cds.Boolean",
+          "@sap.label": "Indicator",
+          "@sap.heading": "Flag",
+          "@sap.quickinfo": "General Flag",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        }
+      }
+    },
+    "API_SALES_ORDER_SRV.rejectApprovalRequest": {
+      "kind": "action",
+      "@cds.external": true,
+      "params": {
+        "SalesOrder": {
+          "type": "cds.String",
+          "length": 11000
+        }
+      },
+      "returns": {
+        "type": "API_SALES_ORDER_SRV.FunctionResult"
+      }
+    },
+    "API_SALES_ORDER_SRV.releaseApprovalRequest": {
+      "kind": "action",
+      "@cds.external": true,
+      "params": {
+        "SalesOrder": {
+          "type": "cds.String",
+          "length": 11000
+        }
+      },
+      "returns": {
+        "type": "API_SALES_ORDER_SRV.FunctionResult"
+      }
+    }
+  }
+}

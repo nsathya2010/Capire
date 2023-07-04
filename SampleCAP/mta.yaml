@@ -1,0 +1,153 @@
+_schema-version: '3.2'
+ID: SampleCAP
+version: 0.0.1
+
+parameters:
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install --production
+        - npx -p @sap/cds-dk cds build --production
+
+modules:
+  # ---------------- DATABASE DEPLOYER MODULE ------------------
+  - name: SampleCAP-db-deployer
+  # ------------------------------------------------------------
+    type: hdb
+    path: gen/db
+    build-parameters:
+      ignore:
+        - default-*.json
+        - .env
+        - "*node_modules*"
+        - package-lock.json
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 1024M
+    requires:
+      - name: SampleCAP-uaa
+      - name: SampleCAP-db
+
+
+  # --------------------- SERVER MODULE ------------------------
+  - name: SampleCAP-srv
+  # ------------------------------------------------------------
+    type: nodejs
+    path: gen/srv
+    build-parameters:
+      ignore:
+        - default-*.json
+        - .env
+        - "*node_modules*"
+        - package-lock.json
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 512M
+      disk-quota: 1024M
+    requires:
+      - name: SampleCAP-uaa
+      - name: SampleCAP-dest
+      - name: SampleCAP-conn
+      - name: SampleCAP-logging
+      - name: SampleCAP-db
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+
+
+
+
+  # ------------------ APP ROUTER MODULE -----------------------
+  - name: SampleCAP-app
+  # ------------------------------------------------------------
+    type: approuter.nodejs
+    path: app
+    build-parameters:
+      ignore:
+        - default-*.json
+        - .env
+        - "*node_modules*"
+        - package-lock.json
+    parameters:
+      memory: 256M
+      disk-quota: 1024M
+    requires:
+      - name: SampleCAP-uaa
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv
+          url: ~{srv-url}
+          timeout: 600000
+          forwardAuthToken: true
+      - name: SampleCAP-logging
+
+
+resources:
+  # ----------------------- UAA SERVICE ------------------------
+  - name: SampleCAP-uaa
+  # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+
+  # -------------------- DESTINATION SERVICE -------------------
+  - name: SampleCAP-dest
+  # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        init_data:
+          instance:
+            existing_destinations_policy: ignore
+            destinations:
+              - Name: SampleCAP-API_SALES_ORDER_SRV
+                Description: SAP S/4HANA Cloud Sales Order (A2X)
+                URL: https://sandbox.api.sap.com
+                Type: HTTP
+                ProxyType: Internet
+                Authentication: NoAuthentication
+                URL.headers.APIKey: <SetValueInCockpit>
+                URL.headers.Application-Interface-Key: <SetValueInCockpit>
+                HTML5.DynamicDestination: true
+
+  # ------------------- CONNECTIVITY SERVICE -------------------
+  - name: SampleCAP-conn
+  # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+
+
+  # ------------------- HDI CONTAINER SERVICE ------------------
+  - name: SampleCAP-db
+  # ------------------------------------------------------------
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: ${service-name}
+
+
+
+
+
+  # ---------------- APPLICATION LOGGING SERVICE ---------------
+  - name: SampleCAP-logging
+  # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
+
