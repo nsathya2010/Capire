@@ -8,7 +8,7 @@
     "node": "^16"
   },
   "dependencies": {
-    "@sap/cds": "^6.8",
+    "@sap/cds": "^7",
     "@sap/audit-logging": "^5",
     "hdb": "^0.19",
     "@sap/cds-odata-v2-adapter-proxy": "^1",
@@ -22,8 +22,9 @@
     "debug": "^4.3",
     "express": "^4"
   },
-  "devDependencies": {
-    "@sap/ux-specification": "^1.96.4"
+  "devDependencies": {    
+    "@sap/ux-specification": "^1.108.5",
+    "@cap-js/sqlite": "^1.0.0"
   },
   "sapux": [
     "app/resources/fiori"
@@ -73,19 +74,13 @@
                 "Admin",
                 "Viewer"
               ]
-              ,
-              "userAttributes": {
-                "Region": [
-                  "$UNRESTRICTED"
-                ]
-              }
             },
             "julie": {
               "roles": [
                 "Viewer"
               ]
               ,
-              "userAttributes": {
+              "attr": {
                 "Region": [
                   "North America",
                   "Asia"
@@ -97,7 +92,7 @@
                 "Viewer"
               ]
               ,
-              "userAttributes": {
+              "attr": {
                 "Region": [
                   "Europe"
                 ]

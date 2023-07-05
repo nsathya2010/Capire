@@ -10,7 +10,7 @@ service CatalogService @(path : '/catalog')
     entity Sales
       @(restrict: [{ grant: ['READ'],
                      to: 'Viewer'
-                    ,where: 'region = $user.Region' 
+                    ,where: 'region = $user.Region or $user.Region is null' 
                    },
                    { grant: ['WRITE'],
                      to: 'Admin' 
@@ -39,19 +39,6 @@ service CatalogService @(path : '/catalog')
           TotalNetAmount,
           TransactionCurrency
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     type userScopes { identified: Boolean; authenticated: Boolean; Viewer: Boolean; Admin: Boolean; };

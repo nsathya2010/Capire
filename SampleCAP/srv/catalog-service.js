@@ -9,10 +9,10 @@ module.exports = cds.service.impl(async function () {
     const s4hcso = await cds.connect.to('API_SALES_ORDER_SRV');
 
     const {
-            Sales
-            ,
-            SalesOrders
-          } = this.entities;
+        Sales
+        ,
+        SalesOrders
+    } = this.entities;
 
     this.after('READ', Sales, (each) => {
         if (each.amount > 500) {
@@ -22,8 +22,8 @@ module.exports = cds.service.impl(async function () {
             else
                 each.comments += ' ';
             each.comments += 'Exceptional!';
-            debug(each.comments, {"country": each.country, "amount": each.amount});
-            log.info(each.comments, {"country": each.country, "amount": each.amount});
+            debug(each.comments, { "country": each.country, "amount": each.amount });
+            log.info(each.comments, { "country": each.country, "amount": each.amount });
         } else if (each.amount < 150) {
             each.criticality = 1;
         } else {
@@ -83,18 +83,6 @@ module.exports = cds.service.impl(async function () {
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     this.on('userInfo', req => {
         let results = {};
         results.user = cds.context.user.id;
@@ -105,7 +93,14 @@ module.exports = cds.service.impl(async function () {
         results.scopes.Viewer = req.user.is('Viewer');
         results.scopes.Admin = req.user.is('Admin');
         results.attrs = {};
-        if (req.user.hasOwnProperty('attr')) {
+
+        // Check req.user.attr exists before accessing it
+
+        // if ('attr' in req.user) {
+        //     results.attrs.Region = req.user.attr.Region;
+        // }
+
+        if (req.user.attr) {
             results.attrs.Region = req.user.attr.Region;
         }
         return results;
