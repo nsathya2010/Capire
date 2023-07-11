@@ -1,7 +1,10 @@
 const cds = require('@sap/cds')
+const { PassThrough } = require("stream");
+const XLSX = require("xlsx");
+
+
 module.exports = cds.service.impl((srv) => {
 
-    //const { Reviews, Likes } = cds.entities('sap.capire.reviews');
 
     srv.on('PUT', 'ExcelUpload', async (req, next) => {
         if (req.data.excel) {
