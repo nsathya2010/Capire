@@ -5,6 +5,7 @@ const XLSX = require("xlsx");
 
 module.exports = cds.service.impl((srv) => {
 
+    const { Students } = cds.entities('SampleCAP.up')
 
     srv.on('PUT', 'ExcelUpload', async (req, next) => {
         if (req.data.excel) {
@@ -58,13 +59,13 @@ module.exports = cds.service.impl((srv) => {
         if (entity === Students) {
             //If any custom handling required for a particular entity
         }
-        const insertQuery = INSERT.into(entity).entries(data);
+        const insertQuery = INSERT.into(Students).entries(data);
         // This calls the service handler of respective entity. It can be used if any custom 
         // validations need to be performed. or else custom handlers can be skipped. 
 
         let srv = await cds.connect.to('Students');
         const insertResult = await srv.run(insertQuery);
-        let query = SELECT.from(entity);
+        let query = SELECT.from(Students);
         await srv.run(query);
         return insertResult; //returns response to excel upload entity
 

@@ -58,6 +58,11 @@ annotate service.Students with @(
                 Label : 'Address',
                 Value : Address,
             },
+            {
+                $Type : 'UI.DataField',
+                Value : ID,
+                Label : 'ID',
+            },
         ],
     },
     UI.Facets : [

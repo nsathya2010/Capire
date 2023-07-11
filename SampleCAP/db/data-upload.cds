@@ -1,9 +1,6 @@
 namespace SampleCAP.up;
 using
-{
-    cuid,
-    temporal,
-    managed
+{    cuid
 } from '@sap/cds/common';
 
 
