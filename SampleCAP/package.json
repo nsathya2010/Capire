@@ -8,29 +8,29 @@
     "node": "^16"
   },
   "dependencies": {
-    "@sap/cds": "^7",
-    "@sap/audit-logging": "^5",
-    "hdb": "^0.19",
-    "@sap/cds-odata-v2-adapter-proxy": "^1",
-
     "@sap-cloud-sdk/http-client": "^2.5",
+    "@sap/audit-logging": "^5",
+    "@sap/cds": "^7",
+    "@sap/cds-odata-v2-adapter-proxy": "^1",
     "@sap/xsenv": "^3",
     "@sap/xssec": "^3",
-    "passport": "^0.4.1",
-
     "cf-nodejs-logging-support": "^6",
     "debug": "^4.3",
-    "express": "^4"
+    "express": "^4",
+    "hdb": "^0.19",
+    "passport": "^0.4.1"
   },
-  "devDependencies": {    
-    "@sap/ux-specification": "^1.108.5",
-    "@cap-js/sqlite": "^1.0.0"
+  "devDependencies": {
+    "@cap-js/sqlite": "^1.0.0",
+    "@sap/ux-specification": "^1.108.8"
   },
   "sapux": [
-    "app/resources/fiori"
+    "app/resources/fiori",
+    "app/uploadapp"
   ],
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-uploadapp": "cds watch --open uploadapp/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -78,8 +78,7 @@
             "julie": {
               "roles": [
                 "Viewer"
-              ]
-              ,
+              ],
               "attr": {
                 "Region": [
                   "North America",
@@ -90,8 +89,7 @@
             "bob": {
               "roles": [
                 "Viewer"
-              ]
-              ,
+              ],
               "attr": {
                 "Region": [
                   "Europe"
@@ -100,22 +98,21 @@
             }
           }
         }
-      }
-      ,
+      },
       "db": {
         "[production]": {
           "kind": "hana-cloud",
           "credentials": {
             "database": "sample"
-          }
-          ,"model": [
+          },
+          "model": [
             "db/data-config",
             "db/data-test"
           ]
         },
         "[development]": {
-          "kind": "sql"
-          ,"model": [
+          "kind": "sql",
+          "model": [
             "db/data-config",
             "db/data-test"
           ]
@@ -124,8 +121,7 @@
           "db",
           "srv"
         ]
-      }
-      ,
+      },
       "API_SALES_ORDER_SRV": {
         "kind": "odata-v2",
         "model": "srv/external/API_SALES_ORDER_SRV",
